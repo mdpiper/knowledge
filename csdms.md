@@ -564,3 +564,28 @@ I found the TLS certs on ***diluvium***,
 so I can use HTTPS with
 
     sudo /data/anaconda3/bin/jupyterhub --ip 128.138.70.88 --ssl-key /usr/local/adm/config/openssl/certs/key/csdms.colorado.edu.key --ssl-cert /usr/local/adm/config/openssl/certs/crt/csdms.colorado.edu.crt --debug
+
+Create a JupyterHub config file.
+
+    jupyterhub --generate_config
+
+Add the TLS certs to the `ssl_key` and `ssl_cert` attributes
+of the config file.
+
+Install a cookie secret file in **/data/anaconda3/etc/jupyter/hub** with
+
+    openssl rand -hex 32 > /data/anaconda3/etc/jupyter/hub/cookie_secret
+
+and add this to the `cookie_secret_file` attribute
+of the config file.
+Be sure to set permissions of 600 (u=rw) on this file,
+and set owner to root.
+
+Generate a 32-character hex string with `openssl`
+to use as the proxy authentication token.
+Set it as the `proxy_auth_token` attribute of the config file.
+
+Place **jupyterhub_config.py** in **/etc/jupyter/hub**
+and call JupyterHub with
+
+    # jupyterhub -f /etc/jupyter/hub/jupyterhub_config.py
