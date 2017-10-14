@@ -6,11 +6,11 @@ My experience in installing, setting up, and running
 
 ## Installing JupyterHub on ***siwenna***
 
-Use Python 3 in **/usr/local/anaconda3**.
+Use the Python 3 installation in **/usr/local/anaconda3**.
 
     PATH=/usr/local/anaconda3/bin:$PATH
 
-(I added this to the **.bash_profile** of root.)
+JupyterHub requires Python >=3.4.
 
 Install `npm` and `nodejs`.
 
@@ -29,7 +29,7 @@ Install JupyterHub.
 
 This also retrieves and installs some dependencies.
 
-Install Jupyter Notebook.
+Update Jupyter Notebook.
 
     sudo /usr/local/anaconda3/bin/pip install --upgrade notebook
 
@@ -40,7 +40,7 @@ This installed a slew of dependencies.
 
 The
 [Getting Started](https://jupyterhub.readthedocs.io/en/0.7.2/getting-started.html)
-document for version 0.7.2 (installed on ***siwenna***)
+document for version 0.7.2 (which is what I installed on ***siwenna***)
 was very helpful.
 
 As a test, run JupyterHub as a (nonpriviledged) single-user server.
@@ -50,6 +50,8 @@ As a test, run JupyterHub as a (nonpriviledged) single-user server.
 Now, from a browser running locally on ***siwenna***,
 I can log in with my PAM credentials at http://127.0.0.1:8000
 and get a Jupyter Notebook.
+Note that I had to modify the firewall
+to open port 8000.
 
 To allow others to log in,
 run JupyterHub as root.
@@ -77,8 +79,7 @@ although the user has to accept my hinky, self-generated, certificate,
 and they can no longer access the site via HTTP.
 Yay!
 
-Use a JupyterHub configuration file
-instead of command line args.
+Use a JupyterHub configuration file instead of command line args.
 Create a config file with
 
     jupyterhub --generate-config
@@ -111,20 +112,26 @@ so that people could log in with, e.g.,
 their GitHub or Google (or CSDMS!) credentials.
 * Can a maximum number of users be set?
 * Can we logout/cull inactive users?
+* Can I use Let's Encrypt to get certs from a real CA?
+No -- ***siwenna*** is behind CU's VPN.
+* Should we move ***siwenna*** out from behind the VPN?
 
 
 ## Installing JupyterHub on ***diluvium***
 
-Following installation instructions at
-https://github.com/jupyterhub/jupyterhub.
-Note that, unless notes, all commands are executed as me.
+I'm following installation instructions at
+https://github.com/jupyterhub/jupyterhub
+for the latest version, 0.8.
+Unless noted, all commands are executed as me.
 
 Install Python 3 in **/data/anaconda3**.
 
     chmod +x Anaconda3-4.4.0-Linux-x86_64.sh
     sudo ./Anaconda3-4.4.0-Linux-x86_64.sh -b -p /data/anaconda3
 
-Download Node.js binary (LTS)
+(Don't use **/usr/local** because OIT checks it.)
+
+Download a Node.js binary (LTS)
 from https://nodejs.org/en/download/,
 uncompress,
 place in **/data/node-v6.11.4-linux-x64**,
@@ -135,7 +142,7 @@ Update path with
 
     PATH=/data/anaconda3/bin:/data/node.js/bin:$PATH
 
-Install the proxy server with
+Install the HTTP proxy server with
 
     npm install -g configurable-http-proxy
 
@@ -151,7 +158,7 @@ Upgrade the `notebook` package:
 
 This also installed several dependencies.
 
-Started the Hub server for myself:
+Start the Hub server for myself:
 
     jupyterhub
 
@@ -166,7 +173,8 @@ Using `iptables`, I opened port 8000.
 
 Now, when running as a privileged user
 
-    sudo /data/anaconda3/bin/jupyterhub --ip 128.138.70.88 --debug
+	su -
+    /data/anaconda3/bin/jupyterhub --ip 128.138.70.88 --debug
 
 I can access http://csdms.colorado.edu:8000 externally.
 (Note that the IP address 128.138.70.87
@@ -197,6 +205,7 @@ and set owner to root.
 
 Generate a 32-character hex string with `openssl`
 to use as the proxy authentication token.
+(This changed from v0.7.2.)
 Set it as the `proxy_auth_token` attribute of the config file.
 
 Place **jupyterhub_config.py** in **/etc/jupyter/hub**
