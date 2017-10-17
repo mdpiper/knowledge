@@ -14,6 +14,31 @@ Fragments of package names can be used.
 
     conda search cca
 
+## Using environments
+
+Multiple Python versions can coexist in an Anaconda installation
+by setting up environments for each.
+For example,
+I have an Anaconda installation with Python 3.5.
+I can create a Python 2.7 environment with
+
+    $ conda create -n py27 python=2.7
+
+where "py27" is the name I gave the environment.
+
+Activate the environment with
+
+    $ source activate py27
+	$ python --version
+	Python 2.7.14 :: Anaconda, Inc.
+
+Deactivate the environment with
+
+    $ source deactivate
+	$ python --version
+	Python 3.5.4 :: Anaconda, Inc.
+
+
 ## Conda packaging
 
 (Perhaps this should be a separate note?)
