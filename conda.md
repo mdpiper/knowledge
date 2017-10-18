@@ -22,7 +22,7 @@ For example,
 I have an Anaconda installation with Python 3.5.
 I can create a Python 2.7 environment with
 
-    $ conda create -n py27 python=2.7
+    conda create -n py27 python=2.7
 
 where "py27" is the name I gave the environment.
 
@@ -37,6 +37,20 @@ Deactivate the environment with
     $ source deactivate
 	$ python --version
 	Python 3.5.4 :: Anaconda, Inc.
+
+List all available environments
+
+    conda env list
+
+I can install packages into an activated environment with `conda`.
+
+Remove an environment, including all installed packages, with
+
+    conda remove --n py27 --all
+
+**Reference**
+
+* https://conda.io/docs/user-guide/tasks/manage-environments.html
 
 
 ## Conda packaging
