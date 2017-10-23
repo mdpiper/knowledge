@@ -3,14 +3,17 @@
 My experience in installing, setting up, and running
 [JupyterHub](https://github.com/jupyterhub/jupyterhub).
 
+Docs: https://jupyterhub.readthedocs.io
+
 
 ## Installing JupyterHub on ***siwenna***
 
 Use the Python 3 installation in **/usr/local/anaconda3**.
+(Note that I've set "mpiper:csdms" as the user and group owners.)
 
     PATH=/usr/local/anaconda3/bin:$PATH
 
-JupyterHub requires Python >=3.4.
+JupyterHub requires `python>=3.4`.
 
 Install `npm` and `nodejs`.
 
@@ -25,29 +28,70 @@ Install HTTP proxy and dependencies.
 
 Install JupyterHub.
 
-    sudo /usr/local/anaconda3/bin/pip install jupyterhub
+    pip install jupyterhub
 
+The current version is 0.8.
 This also retrieves and installs some dependencies.
 
 Update Jupyter Notebook.
 
-    sudo /usr/local/anaconda3/bin/pip install --upgrade notebook
+    pip install --upgrade notebook
 
 This installed a slew of dependencies.
+
+Create a py27 environment with a full Anaconda.
+This should include `notebook` and `ipykernel`.
+
+    conda create -n py27 python=2.7 anaconda
+
+Activate it:
+
+    source activate py27
+
+Register the Python 2 kernel in the Python 3 distro.
+
+    (py27)$ python -m ipykernel install --prefix=/usr/local/anaconda3 --name 'python2'
+    Installed kernelspec python2 in /usr/local/anaconda3/share/jupyter/kernels/python2
+
+For reference, view the two kernelspec files.
+
+```bash
+$ cd anaconda3/share/jupyter/kernels
+$ cat python3/kernel.json
+{
+ "argv": [
+   "python",
+   "-m",
+   "ipykernel_launcher",
+   "-f",
+   "{connection_file}"
+ ],
+ "display_name": "Python 3",
+ "language": "python"
+}
+
+$ cat python2/kernel.json
+{
+ "display_name": "Python 2",
+ "language": "python",
+ "argv": [
+   "/usr/local/anaconda3/envs/py27/bin/python",
+   "-m",
+   "ipykernel_launcher",
+   "-f",
+   "{connection_file}"
+  ]
+}
+```
 
 
 ## Configuring and running JupyterHub on ***siwenna***
 
-The
-[Getting Started](https://jupyterhub.readthedocs.io/en/0.7.2/getting-started.html)
-document for version 0.7.2 (which is what I installed on ***siwenna***)
-was very helpful.
-
-As a test, run JupyterHub as a (nonpriviledged) single-user server.
+As a test, run JupyterHub as a (nonprivileged) single-user server.
 
     jupyterhub
 
-Now, from a browser running locally on ***siwenna***,
+From a browser running locally on ***siwenna***,
 I can log in with my PAM credentials at http://127.0.0.1:8000
 and get a Jupyter Notebook.
 Note that I had to modify the firewall
@@ -58,6 +102,7 @@ run JupyterHub as root.
 Executing
 
     $ su -
+	# PATH=/usr/local/anaconda3/bin:$PATH
     # jupyterhub --ip 128.138.87.12 --debug
 
 allows me to log in
@@ -71,22 +116,21 @@ Yay!
 I want to support HTTPS.
 Executing
 
-	# jupyterhub --ip 128.138.87.12 --ssl-key /etc/pki/tls/private/ca.key --ssl-cert /etc/pki/tls/certs/ca.crt --debug
+	# jupyterhub --ip 128.138.87.12 --ssl-key /etc/letsencrypt/live/siwenna.colorado.edu/privkey.pem --ssl-cert /etc/letsencrypt/live/siwenna.colorado.edu/cert.pem --debug
 
 allows me to log in
 at https://siwenna.colorado.edu:8000,
-although the user has to accept my hinky, self-generated, certificate,
 and they can no longer access the site via HTTP.
 Yay!
 
 Use a JupyterHub configuration file instead of command line args.
 Create a config file with
 
-    jupyterhub --generate-config
+    # jupyterhub --generate-config
 
 Install a cookie secret file in **/srv/jupyterhub** with
 
-    openssl rand -base64 2048 > /srv/jupyterhub/cookie_secret
+    # openssl rand -hex 32 > /srv/jupyterhub/cookie_secret
 
 and add this to the `cookie_secret_file` attribute
 of the config file.
@@ -94,7 +138,8 @@ Be sure to set permissions of 600 (u=rw) on this file.
 
 Generate a 32-character hex string with `openssl`
 to use as the proxy authentication token.
-Set it as the `proxy_auth_token` attribute of the config file.
+Set it as the `ConfigurableHTTPProxy.auth_token` attribute
+of the config file.
 
 Place **jupyterhub_config.py** in **/etc/jupyterhub**
 and call JupyterHub with
@@ -112,9 +157,6 @@ so that people could log in with, e.g.,
 their GitHub or Google (or CSDMS!) credentials.
 * Can a maximum number of users be set?
 * Can we logout/cull inactive users?
-* Can I use Let's Encrypt to get certs from a real CA?
-No -- ***siwenna*** is behind CU's VPN.
-* Should we move ***siwenna*** out from behind the VPN?
 
 
 ## Installing JupyterHub on ***diluvium***
@@ -157,6 +199,9 @@ Upgrade the `notebook` package:
     pip install --upgrade notebook
 
 This also installed several dependencies.
+
+
+## Configuring and running JupyterHub on ***diluvium***
 
 Start the Hub server for myself:
 
