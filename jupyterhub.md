@@ -3,8 +3,6 @@
 My experience in installing, setting up, and running
 [JupyterHub](https://github.com/jupyterhub/jupyterhub).
 
-Docs: https://jupyterhub.readthedocs.io
-
 
 ## Installing JupyterHub on ***siwenna***
 
@@ -83,6 +81,11 @@ $ cat python2/kernel.json
   ]
 }
 ```
+
+**References**
+
+* https://jupyterhub.readthedocs.io
+* https://ipython.readthedocs.io/en/stable/install/kernel_install.html#kernels-for-different-environments
 
 
 ## Configuring and running JupyterHub on ***siwenna***
