@@ -31,12 +31,16 @@ Activate the environment with
     $ source activate py27
 	$ python --version
 	Python 2.7.14 :: Anaconda, Inc.
+    $ which python
+	/home/mpiper/anaconda/envs/py27/bin/python
 
 Deactivate the environment with
 
     $ source deactivate
 	$ python --version
 	Python 3.5.4 :: Anaconda, Inc.
+    $ which python
+	/home/mpiper/anaconda/bin/python
 
 List all available environments
 
@@ -46,7 +50,7 @@ I can install packages into an activated environment with `conda`.
 
 Remove an environment, including all installed packages, with
 
-    conda remove --n py27 --all
+    conda remove -n py27 --all
 
 **Reference**
 
