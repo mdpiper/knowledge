@@ -1,14 +1,17 @@
 # CentOS (and siwenna)
 
-CentOS 6.6 is installed on ***siwenna***.
+CentOS 7 is installed on ***siwenna***.
 ```
 $ lsb_release -a
-LSB Version: :base-4.0-amd64:base-4.0-noarch:core-4.0-amd64:core-4.0-noarch:graphics-4.0-amd64:graphics-4.0-noarch:printing-4.0-amd64:printing-4.0-noarch
+LSB Version:    :core-4.1-amd64:core-4.1-noarch:cxx-4.1-amd64:cxx-4.1-noarch:desktop-4.1-amd64:desktop-4.1-noarch:languages-4.1-amd64:languages-4.1-noarch:printing-4.1-amd64:printing-4.1-noarch
 Distributor ID: CentOS
-Description: CentOS release 6.6 (Final)
-Release: 6.6
-Codename: Final
+Description:    CentOS Linux release 7.4.1708 (Core)
+Release:        7.4.1708
+Codename:       Core
 ```
+
+Compared with CentOS 6,
+almost everything is already set up for me.
 
 Note that there's some crossover with my
 [Linux](./linux.md) notes.
@@ -21,6 +24,105 @@ Note that there's some crossover with my
 	$ yum search
 	$ yum info
 	$ yum install
+
+
+## Firewall
+
+CentOS 7 uses `firewalld` to configure and manage its firewall.
+Access it through `systemctl` with:
+
+    sudo systemctl status firewalld
+
+Also `stop`, `start`, and `restart`.
+It's far too complex for what I need.
+
+Find the current zone.
+It seems to supply what I need.
+
+    $ sudo firewall-cmd --get-active-zones
+    public
+      interfaces: enp0s25
+
+Allow web traffic.
+
+    sudo firewall-cmd --add-service=http --permanent
+    sudo firewall-cmd --add-service=https --permanent
+    sudo systemctl restart firewalld
+
+Open port 8000 for JupyterHub.
+
+    sudo firewall-cmd --zone=public --add-port=8000/tcp --permanent
+    sudo systemctl restart firewalld
+
+*References*
+
+* https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-firewalld-on-centos-7
+* https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/security_guide/sec-using_firewalls#sec-Introduction_to_firewalld
+* https://www.linode.com/docs/web-servers/apache/install-and-configure-apache-on-centos-7
+* https://stackoverflow.com/questions/24729024/centos-7-open-firewall-port
+
+
+## Web server
+
+When installing CentOS 7,
+I set up the internets as well as my hostname.
+
+    $ hostname
+	siwenna.colorado.edu
+
+Install Apache.
+
+    sudo yum install httpd
+
+The configuration lives in **/etc/httpd/conf** and
+document root is **/var/www/html**.
+The only change in the **httpd.conf** file is
+
+    ServerName siwenna.colorado.edu:80
+
+Start the web server with:
+
+    sudo systemctl start httpd
+
+And set it to start on boot:
+
+    sudo systemctl enable httpd.service
+
+I can now access http://siwenna.colorado.edu.
+Access to https://siwenna.colorado.edu is also allowed,
+but the certificates used are those provided on install,
+and aren't valid,
+so the web browser issues a warning.
+To get valid certificates,
+I used [Certbot](https://certbot.eff.org/#centosrhel7-apache).
+
+Results:
+> - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/siwenna.colorado.edu/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/siwenna.colorado.edu/privkey.pem
+   Your cert will expire on 2018-01-23. To obtain a new or tweaked
+   version of this certificate in the future, simply run certbot
+   again. To non-interactively renew *all* of your certificates, run
+   "certbot renew"
+> - Your account credentials have been saved in your Certbot
+   configuration directory at /etc/letsencrypt. You should make a
+   secure backup of this folder now. This configuration directory will
+   also contain certificates and private keys obtained by Certbot so
+   making regular backups of this folder is ideal.
+
+I added the paths to these certs to **ssl.conf**.
+
+
+# CentOS 6
+
+From 2013-2017,
+***siwenna*** run CentOS 6.
+It started at 6.5 and ended at 6.9.
+In October 2017,
+I upgraded ***siwenna*** to CentOS 7.
+The following sections were obsoleted by this upgrade.
+
 
 ## Emacs
 
@@ -56,16 +158,6 @@ See also:
 Set the "-X" option to enable X forwarding:
 
 	$ ssh -X mapi8461@siwenna.colorado.edu
-
-## File transfer
-
-Remember how to call `scp`? Example for single file:
-
-	$ scp N3100.tif mapi8888.colorado.edu:/data/ftp/pub/users/mapi8888
-
-Recursively copy a directory with the `-r` flag.
-
-Can't `scp` files into a directory requiring root permissions.
 
 
 ## Web server
@@ -177,4 +269,3 @@ I enabled the `rpmforge-extras` repo:
 and used it to install version 1.7.
 It successfully removed 1.6,
 which is the CentOS default.
-
