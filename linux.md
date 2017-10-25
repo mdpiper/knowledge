@@ -137,6 +137,10 @@ making them a sudoer.
 
     usermod -aG wheel mpiper
 
+Find what groups a user belongs to.
+
+    groups mpiper
+
 *References*
 
 * [Creating a group](https://www.centos.org/docs/5/html/5.1/Deployment_Guide/s2-groups-add.html) [centos.org]
