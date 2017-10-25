@@ -117,3 +117,28 @@ I used `ldconfig`:
 ```bash
 $ ldconfig -v /home/mpiper/anaconda2/lib
 ```
+
+
+## Users and groups
+
+Create a new group with `groupadd`.
+
+    groupadd csdms
+
+Create a new user, setting their default group
+and creating their home directory.
+Unlock the new user by setting their password.
+
+    useradd mpiper -c "Mark Piper" -g csdms -m
+	passwd mpiper
+
+Add the user to the "wheel" group,
+making them a sudoer.
+
+    usermod -aG wheel mpiper
+
+*References*
+
+* [Creating a group](https://www.centos.org/docs/5/html/5.1/Deployment_Guide/s2-groups-add.html) [centos.org]
+* [Creating a user](https://www.centos.org/docs/5/html/5.1/Deployment_Guide/s2-users-add.html) [centos.org]
+* [Making a sudo user](https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-centos-quickstart) [digitalocean.com]
