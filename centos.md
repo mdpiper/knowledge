@@ -54,7 +54,7 @@ Open port 8000 for JupyterHub.
     sudo firewall-cmd --zone=public --add-port=8000/tcp --permanent
     sudo systemctl restart firewalld
 
-*References*
+*References:*
 
 * https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-firewalld-on-centos-7
 * https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/security_guide/sec-using_firewalls#sec-Introduction_to_firewalld
@@ -112,6 +112,26 @@ Results:
    making regular backups of this folder is ideal.
 
 I added the paths to these certs to **ssl.conf**.
+
+## SSH access
+
+Shortly after installing CentOS 7 and getting ***siwenna*** accessible
+outside CU's VPN, I noticed a stream of attempted logins
+(several per minute) from IP addresses in China. Hackers!
+I added a rule to **/etc/hosts.allow** to allow only logins
+from CU:
+
+    sshd : 128.138. : allow
+
+and a complimentary rule to **/etc/hosts.deny**
+
+    sshd : ALL
+
+Hopefully this will only be temporary.
+
+*Reference:*
+
+* https://serverfault.com/a/345541
 
 
 # CentOS 6
