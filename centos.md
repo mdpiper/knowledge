@@ -37,21 +37,57 @@ Also `stop`, `start`, and `restart`.
 It's far too complex for what I need.
 
 Find the current zone.
-It seems to supply what I need.
 
     $ sudo firewall-cmd --get-active-zones
     public
       interfaces: enp0s25
 
-Allow web traffic.
+Allow web traffic in the "public" zone.
 
     sudo firewall-cmd --add-service=http --permanent
     sudo firewall-cmd --add-service=https --permanent
-    sudo systemctl restart firewalld
+
+Get move verbose information on the current zone,
+and show that the above commands worked.
+
+    $ sudo firewall-cmd --list-all
+	public (active)
+	  target: default
+	  icmp-block-inversion: no
+	  interfaces: enp0s25
+      sources:
+	  services: ssh dhcpv6-client http https
+	  ports:
+	  protocols:
+      masquerade: no
+	  forward-ports:
+      source-ports:
+	  icmp-blocks:
+      rich rules:
 
 Open port 8000 for JupyterHub.
 
-    sudo firewall-cmd --zone=public --add-port=8000/tcp --permanent
+    $ sudo firewall-cmd --zone=public  --permanent --add-port=8000/tcp
+	success
+	$ sudo firewall-cmd --list-ports
+	8000/tcp
+    $ sudo firewall-cmd --list-all
+	public (active)
+	  target: default
+	  icmp-block-inversion: no
+	  interfaces: enp0s25
+      sources:
+	  services: ssh dhcpv6-client http https
+	  ports: 8000/tcp
+	  protocols:
+      masquerade: no
+	  forward-ports:
+      source-ports:
+	  icmp-blocks:
+      rich rules:
+
+Restart the firewall.
+
     sudo systemctl restart firewalld
 
 *References:*
@@ -128,6 +164,8 @@ and a complimentary rule to **/etc/hosts.deny**
     sshd : ALL
 
 Hopefully this will only be temporary.
+
+The log file is **/var/log/secure**.
 
 *Reference:*
 
