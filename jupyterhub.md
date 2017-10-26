@@ -6,13 +6,7 @@ My experience in installing, setting up, and running
 
 ## Installing JupyterHub on ***siwenna***
 
-Use the Python 3 installation in **/usr/local/anaconda3**.
-(Note that I've set "mpiper:csdms" as the user and group owners.)
-
-    PATH=/usr/local/anaconda3/bin:$PATH
-
-JupyterHub requires `python>=3.4`.
-
+First, take care of dependencies.
 Install `npm` and `nodejs`.
 
     sudo yum install npm nodejs
@@ -22,7 +16,14 @@ This also installs the `node` executable.
 Install HTTP proxy and dependencies.
 
     sudo npm install -g inherits@'2'
-	sudo npm install -g configurable-http-proxy
+    sudo npm install -g configurable-http-proxy
+
+Use the Python 3 installation in **/usr/local/anaconda3**.
+(Note that I've set "mpiper:csdms" as the user and group owners.)
+
+    PATH=/usr/local/anaconda3/bin:$PATH
+
+JupyterHub requires `python>=3.4`.
 
 Install JupyterHub.
 
@@ -147,6 +148,7 @@ of the config file.
 Place **jupyterhub_config.py** in **/etc/jupyterhub**
 and call JupyterHub with
 
+    # PATH=/usr/local/anaconda3/bin:$PATH
     # jupyterhub -f /etc/jupyterhub/jupyterhub_config.py
 
 
