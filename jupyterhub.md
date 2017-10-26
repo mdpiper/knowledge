@@ -83,7 +83,7 @@ $ cat python2/kernel.json
 }
 ```
 
-**References**
+*References:*
 
 * https://jupyterhub.readthedocs.io
 * https://ipython.readthedocs.io/en/stable/install/kernel_install.html#kernels-for-different-environments
@@ -150,6 +150,28 @@ and call JupyterHub with
 
     # PATH=/usr/local/anaconda3/bin:$PATH
     # jupyterhub -f /etc/jupyterhub/jupyterhub_config.py
+
+
+### Login issue (resolved)
+
+At first,
+I was able to login once,
+but subsequent logins were denied.
+This problem is discussed in the JupyterHub issue listed below.
+I found that setting
+
+    c.PAMAuthenticator.open_sessions = False
+
+in the JupyterHub config worked (fingers crossed).
+
+Disabling SELinux is also a solution,
+but not a very good one.
+I had done this earlier, when ***siwenna*** was CentOS 6,
+which is why I think I didn't encounter this problem earlier.
+
+*Reference:*
+
+* https://github.com/jupyterhub/jupyterhub/issues/323
 
 
 ### Think about
