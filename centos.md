@@ -152,8 +152,10 @@ I added the paths to these certs to **ssl.conf**.
 ## SSH access
 
 Shortly after installing CentOS 7 and getting ***siwenna*** accessible
-outside CU's VPN, I noticed a stream of attempted logins
+outside CU's VPN, I noticed a stream of attempted root logins
 (several per minute) from IP addresses in China. Hackers!
+See the log file, **/var/log/secure**.
+
 I added a rule to **/etc/hosts.allow** to allow only logins
 from CU:
 
@@ -165,11 +167,24 @@ and a complimentary rule to **/etc/hosts.deny**
 
 Hopefully this will only be temporary.
 
-The log file is **/var/log/secure**.
+**Update:**
+I think I have a better solution.
+Edit **/etc/ssh/sshd_config**,
+setting
+
+    PermitRootLogin no
+
+Then restart sshd:
+
+    sudo systemctl restart sshd
+
+This should disable remote root logins.
+See the Redhat link below.
 
 *Reference:*
 
 * https://serverfault.com/a/345541
+* https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Security_Guide/s2-wstation-privileges-noroot.html
 
 
 # CentOS 6
