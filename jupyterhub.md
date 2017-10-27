@@ -174,10 +174,27 @@ which is why I think I didn't encounter this problem earlier.
 * https://github.com/jupyterhub/jupyterhub/issues/323
 
 
+### JupyterHub as a service
+
+Ideally, we want JupyterHub to run as a service.
+We can then control it with
+
+    sudo systemctl [start|stop|status] jupyterhub
+
+instead of having to log in as root.
+
+Using the reference listed below,
+we created a [jupyterhub.service](https://github.com/csdms/jupyterhub/blob/master/jupyterhub.service) file,
+placed it in **/lib/systemd/system**,
+and started a Hub with `systemctl`.
+
+*Reference:*
+
+* https://github.com/jupyterhub/jupyterhub/wiki/Run-jupyterhub-as-a-system-service
+
+
 ### Think about
 
-* Can I start JupyterHub as a service when ***siwenna*** starts?
-See https://github.com/jupyterhub/jupyterhub/wiki/Run-jupyterhub-as-a-system-service.
 * It would be great to use the
 [OAuthenticator](https://github.com/jupyterhub/oauthenticator)
 so that people could log in with, e.g.,
