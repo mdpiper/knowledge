@@ -188,6 +188,10 @@ we created a [jupyterhub.service](https://github.com/csdms/jupyterhub/blob/maste
 placed it in **/lib/systemd/system**,
 and started a Hub with `systemctl`.
 
+Automatically start a Hub on boot with
+
+    sudo systemctl enable jupyterhub
+
 *Reference:*
 
 * https://github.com/jupyterhub/jupyterhub/wiki/Run-jupyterhub-as-a-system-service
