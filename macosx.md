@@ -1,6 +1,15 @@
-# Mac OS X
+# macOS
 
-I'm still a Linux guy.
+I'm still a Linux guy, but I'm warming to Macs.
+
+
+## Find macOS version
+
+From the command line
+
+    $ sw_vers -productVersion
+	10.11.6
+
 
 ## Homebrew
 
