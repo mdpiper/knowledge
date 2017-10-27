@@ -197,6 +197,17 @@ Automatically start a Hub on boot with
 * https://github.com/jupyterhub/jupyterhub/wiki/Run-jupyterhub-as-a-system-service
 
 
+### Cull inactive servers
+
+Following the example in the JupyterHub docs (and referenced below),
+I placed the `cull_active_servers` script in **/etc/jupyterhub**
+and added it as a service.
+
+*Reference:*
+
+* https://github.com/jupyterhub/jupyterhub/tree/master/examples/cull-idle
+
+
 ### Think about
 
 * It would be great to use the
@@ -204,7 +215,6 @@ Automatically start a Hub on boot with
 so that people could log in with, e.g.,
 their GitHub or Google (or CSDMS!) credentials.
 * Can a maximum number of users be set?
-* Can we logout/cull inactive users?
 
 
 ## Installing JupyterHub on ***diluvium***
