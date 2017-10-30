@@ -148,6 +148,12 @@ Results:
    making regular backups of this folder is ideal.
 
 I added the paths to these certs to **ssl.conf**.
+Note that the certs expire in 90 days.
+
+I set up a daily `cron` job to request new certs from Certbot.
+It Does The Right Thing and checks to see whether I actually
+need new certs. If not, it returns.
+
 
 ## SSH access
 
