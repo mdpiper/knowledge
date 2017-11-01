@@ -341,6 +341,13 @@ Push the tag to the remote:
 
 Note that Travis will start a build based on the new tag.
 
+To delete a tag, both locally and at the origin, use:
+
+    git tag --delete v0.1
+	git push --delete origin v0.1.1
+
+I never make mistakes.
+
 
 ## Keep a feature branch in sync with the master branch
 
