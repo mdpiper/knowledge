@@ -1,15 +1,51 @@
 # CSDMS
 
-## BMI
 
-BMI = Basic Model Interface.
+## Summit and Blanca (HPCC)
 
-* [BMI API documentation](http://bmi-forum.readthedocs.org/en/latest/index.html) [rtfd.org]
-* Old, but the [BMI SIDL signatures](https://github.com/csdms/bmi/blob/master/bmi.sidl)
-* The awkward signature of some BMI functions--using a parameter to
-pass information out of the function--is so that memory is not allocated
-within the function. Memory must be allocated at the calling level
-or above.
+The summit and blanca clusters are administered by
+CU's Research Computing (RC) facility.
+
+To login, use your CU IdentiKey:
+
+    ssh <username>@login.rc.colorado.edu
+
+The password prompt is interesting.
+Use your IdentiKey password,
+but prefix it with `duo:`,
+like this:
+
+    duo:<password>
+
+This will trigger a notification on the Duo app.
+Confirm your login on the app,
+and you'll be logged in.
+
+Note that in addition to login and compute nodes,
+summit has compile nodes.
+When logged in to summit, access a compile node with:
+
+    ssh compilenode
+
+Summit uses modules. Check for available modules with
+
+    module avail
+
+Load a more recent version of git (v2.4.2) than the default
+
+    module load git
+
+See how to load a more recent Python with
+
+    module spider python/2.7.10
+
+
+*References:*
+
+* [User Guide](https://www.rc.colorado.edu/support/user-guide)
+ * [Batch queuing and job scheduling](https://www.rc.colorado.edu/support/user-guide/batch-queueing.html)
+ * [Interactive jobs](https://www.rc.colorado.edu/support/user-guide/batch-queueing.html#interactive_jobs)
+ * [Modules](https://www.rc.colorado.edu/support/user-guide/modules.html)
 
 
 ## Beach (HPCC)
@@ -19,13 +55,13 @@ View the beach cluster report at:
 
 Use ***beach-nfs*** for file transfers.
 
-	$ rsync foo mapi8888@beach-nfs:/scratch/mapi8888
+	$ rsync foo <username>@beach-nfs:/scratch/<username>
 
 The **/scratch** disk is directly connected to ***beach-nfs***
 and then NFS mounted to ***beach***.
 Can login directly:
 
-    $ ssh mapi8461@beach-nfs
+    $ ssh <username>@beach-nfs
 
 Check my disk quota:
 
@@ -52,8 +88,8 @@ Restart the CSDMS web server with
 
 	$ sudo /usr/local/httpd/bin/apachectl -k restart
 
-My FTP directory on ***river*** is **/data/ftp/pub/users/mapi8888**.
-Users can access this site [here](http://csdms.colorado.edu/pub/users/mapi8888/).
+My FTP directory on ***river*** is **/data/ftp/pub/users/<username>**.
+Users can access this site [here](http://csdms.colorado.edu/pub/users/<username>/).
 
 CSDMS has a THREDDS server at http://csdms.colorado.edu/thredds/catalog.html.
 Data can be added to existing directories at **/data/thredds/public**.
@@ -104,7 +140,7 @@ The files are located at **river:/data/ftp/pub/users/wmt**.
 1. Sync the resulting **war/** directory (war = "web archive") with
    that in my home directory on ***river***:
 
-        $ rsync -r war mapi8461@river:~
+        $ rsync -r war <username>@river:~
 
    Note carefully the _src_ and _dst_ directories.
 
@@ -157,7 +193,7 @@ The files are located at **river:/data/ftp/pub/users/wmt**.
 
 1. Change the permissions on **internal** so I can access it without sudo:
 
-        $ sudo chown mapi8461:nobody internal/
+        $ sudo chown <username>:nobody internal/
 
 1. Get the latest miniconda distribution and install it in **internal/miniconda**.
 
@@ -386,3 +422,14 @@ This is particularly helpful for debugging.
 Console output (standard output and standard error)
 from the run is logged in **~/.wmt/<uuid>/stdout**.
 
+
+## BMI
+
+BMI = Basic Model Interface.
+
+* [BMI API documentation](http://bmi-forum.readthedocs.org/en/latest/index.html) [rtfd.org]
+* Old, but the [BMI SIDL signatures](https://github.com/csdms/bmi/blob/master/bmi.sidl)
+* The awkward signature of some BMI functions--using a parameter to
+pass information out of the function--is so that memory is not allocated
+within the function. Memory must be allocated at the calling level
+or above.
