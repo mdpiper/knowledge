@@ -6,6 +6,11 @@
 The summit and blanca clusters are administered by
 CU's Research Computing (RC) facility.
 
+User Guide: https://www.rc.colorado.edu/support/user-guide
+
+
+### Login
+
 To login, use your CU IdentiKey:
 
     ssh <username>@login.rc.colorado.edu
@@ -21,11 +26,23 @@ This will trigger a notification on the Duo app.
 Confirm your login on the app,
 and you'll be logged in.
 
+To login to our nodes on blanca, use:
+
+    ssh <username>@blogin01.rc.colorado.edu
+
+and follow the same instructions for entering a password as above.
+
+
+### Compile nodes
+
 Note that in addition to login and compute nodes,
 summit has compile nodes.
 When logged in to summit, access a compile node with:
 
     ssh compilenode
+
+
+### Modules
 
 Summit uses modules. Check for available modules with
 
@@ -39,13 +56,37 @@ See how to load a more recent Python with
 
     module spider python/2.7.10
 
+*References:*
+
+* https://www.rc.colorado.edu/support/user-guide/modules.html
+
+
+### File transfer
+
+Summit and blanca only allow `scp` and `sftp`, not `rsync`.
+Further,
+it appears that the file transfer can only be initiated from
+from the remote machine,
+not summit or blanca.
+For example, to transfer the file readme.md from a location on beach:
+
+    scp readme.md mapi8461@login.rc.colorado.edu:~/wmt/_testing
+
+You'll have to enter your password + Duo as above,
 
 *References:*
 
-* [User Guide](https://www.rc.colorado.edu/support/user-guide)
- * [Batch queuing and job scheduling](https://www.rc.colorado.edu/support/user-guide/batch-queueing.html)
- * [Interactive jobs](https://www.rc.colorado.edu/support/user-guide/batch-queueing.html#interactive_jobs)
- * [Modules](https://www.rc.colorado.edu/support/user-guide/modules.html)
+* https://www.rc.colorado.edu/support/user-guide/file-transfer.html
+
+
+### Job control
+
+Slurm!
+
+*References:*
+
+* [Batch queuing and job scheduling](https://www.rc.colorado.edu/support/user-guide/batch-queueing.html)
+* [Interactive jobs](https://www.rc.colorado.edu/support/user-guide/batch-queueing.html#interactive_jobs)
 
 
 ## Beach (HPCC)
