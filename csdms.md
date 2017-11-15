@@ -32,6 +32,8 @@ To login to our nodes on blanca, use:
 
 and follow the same instructions for entering a password as above.
 
+Note that I can login without a CU VPN connection.
+
 
 ### Compile nodes
 
@@ -40,6 +42,8 @@ summit has compile nodes.
 When logged in to summit, access a compile node with:
 
     ssh compilenode
+
+Note that blanca doesn't have compile nodes.
 
 
 ### Modules
