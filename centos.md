@@ -187,10 +187,33 @@ Then restart sshd:
 This should disable remote root logins.
 See the Redhat link below.
 
-*Reference:*
+*References:*
 
 * https://serverfault.com/a/345541
 * https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Security_Guide/s2-wstation-privileges-noroot.html
+
+
+## Users and groups
+
+This doesn't quite fit in this page,
+but I have to do it often enough that I'll include it.
+
+Make a new user and give them a password:
+
+    sudo adduser saganaut
+	sudo passwd saganaut
+
+BY default, each user is included in an eponymous group.
+To include the user in another group:
+
+    sudo usermod -aG csdms saganaut
+
+Including the user in the `wheel` group grants them sudo privileges.
+
+*References:*
+
+* https://www.digitalocean.com/community/tutorials/how-to-add-and-delete-users-on-a-centos-7-server
+* https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-centos-quickstart
 
 
 # CentOS 6
