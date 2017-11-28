@@ -2,11 +2,20 @@
 
 We use `conda` at CSDMS for all our Python needs.
 
-## Install, uninstall, and list packages
+## Install and uninstall packages
 
     conda install ipython
     conda uninstall ipython
+
+
+## List installed packages
+
     conda list
+
+Export the list of packages for future use:
+
+    conda list --export > requirements.txt
+
 
 ## Search for packages to install
 
