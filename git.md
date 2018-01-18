@@ -695,7 +695,7 @@ $ git diff --stat 06ff4cdd0a581dd23f9a36e251709602c8f088dc
  4 files changed, 309 insertions(+)
 ```
 
-## Split a repository
+## Break out a subdirectory into a new repository
 
 I want to split a subpath into a new repository. E.g., I have:
 
@@ -714,6 +714,88 @@ and I want:
 		.git/
 
 There's a Github [help article](https://help.github.com/articles/splitting-a-subpath-out-into-a-new-repository) and a Stackoverflow [thread](http://stackoverflow.com/questions/359424/detach-subdirectory-into-separate-git-repository).
+
+
+## Split a repository
+
+I had a project, **pbs**,
+containing server and executor code,
+that I wanted to split into two repositories,
+**pbs-server** and **pbs-executor**.
+This isn't as simple as the case above
+because the code was combined into a single Python package.
+
+Here are the steps I used.
+
+1. Clone **pbs** and create a new branch.
+
+        git clone git@github.com:permamodel/pbs.git
+	    cd pbs
+		git branch mdpiper/tear-out-executor-code
+		git checkout mdpiper/tear-out-executor-code
+
+1. Refactor **pbs**, removing all executor code, leaving only server
+   code. (This may be difficult and time-consuming.)
+
+1. Push the branch back to origin.
+
+        git push origin mdpiper/tear-out-executor-code
+
+1. Create a new, empty, repository on GitHub for **pbs-server** and
+   clone it.
+
+        cd -
+        git clone git@github.com:permamodel/pbs-server.git
+		cd pbs-server
+
+1. Set the `upstream` repository for **pbs-server** to **pbs**.
+
+        git remote add upstream https://github.com/permamodel/pbs
+
+1. Pull the feature branch from **pbs** into **pbs-server**.
+
+        git pull upstream mdpiper/tear-out-executor-code
+
+1. Remove the remote (optional) and push the changes to origin master
+   on **pbs-server**.
+
+        git remote rm upstream
+        git push origin master
+
+This takes care of the server-side code.
+Now, for the executor code.
+
+1. Return to the local **pbs** and checkout the master branch.
+
+        cd -
+		cd pbs
+		git checkout master
+
+    Recall that the master branch contains the original contents of **pbs**.
+
+1. Create a new branch.
+
+		git branch mdpiper/tear-out-server-code
+		git checkout mdpiper/tear-out-server-code
+
+1. Refactor **pbs**, removing all server code, leaving only executor
+   code. (This may be difficult and time-consuming.)
+
+1. Push the branch back to origin and PR it into the master branch.
+
+        git push origin mdpiper/tear-out-server-code
+
+1. Last, rename **pbs** to **pbs-executor** on GitHub..
+
+The only possible issue
+(and maybe this is a good thing)
+is that the commit history up to the split
+is preserved in both repositories.
+
+**Reference:**
+
+* http://gbayer.com/development/moving-files-from-one-git-repository-to-another-preserving-history/
+
 
 ## Migrate a repository from SVN to GitHub
 
@@ -739,6 +821,3 @@ which had an existing repo on GitHub.
 
 This is a GitHub, not a git, thing, but nevertheless, use
 [https://github-issue-mover.appspot.com/](https://github-issue-mover.appspot.com/).
-
-
-
