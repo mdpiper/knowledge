@@ -1,6 +1,6 @@
-# Notes on using Emacs
+# Emacs
 
-Gained from years of experience!
+Notes on using Emacs. Gained from years of experience!
 
 ## Package management
 
@@ -172,6 +172,15 @@ but shift to the left with
 and shift to the right with
 
     C-c >
+
+In `bibtex-mode`, to get the proper BibTeX format, type
+
+    C-c C-q
+
+while within a bibliography entry.
+The long form of this command is
+
+    M-x bibtex-fill-entry
 
 
 ## Transpose characters
