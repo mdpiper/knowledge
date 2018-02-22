@@ -154,6 +154,57 @@ I set up a daily `cron` job to request new certs from Certbot.
 It Does The Right Thing and checks to see whether I actually
 need new certs. If not, it returns.
 
+### Disable SSLv3
+
+I got a nastygram from CU stating that SSLv3 had to be disabled
+else I'm open to a POODLE attack.
+Sounds terrible.
+In **/etc/httpd/conf.d/ssl.conf**,
+I changed `SSLProtocol` to
+
+    SSLProtocol all -SSLv2 -SSLv3
+
+I then checked this from ***solaria***.
+
+```bash
+$ openssl s_client -connect 128.138.87.12:443 -ssl3
+CONNECTED(00000003)
+140735227875408:error:14094410:SSL routines:ssl3_read_bytes:sslv3 alert handshake failure:s3_pkt.c:1500:SSL alert number 40
+140735227875408:error:1409E0E5:SSL routines:ssl3_write_bytes:ssl handshake failure:s3_pkt.c:659:
+---
+no peer certificate available
+---
+No client certificate CA names sent
+---
+SSL handshake has read 7 bytes and written 0 bytes
+---
+New, (NONE), Cipher is (NONE)
+Secure Renegotiation IS NOT supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+SSL-Session:
+    Protocol  : SSLv3
+    Cipher    : 0000
+    Session-ID:
+    Session-ID-ctx:
+    Master-Key:
+    Key-Arg   : None
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    Start Time: 1519333402
+    Timeout   : 7200 (sec)
+    Verify return code: 0 (ok)
+---
+```
+
+The `ssl handshake failure` line means it's disabled.
+
+*Reference:*
+
+* https://www.centos.org/forums/viewtopic.php?t=49029
+
 
 ## SSH access
 
