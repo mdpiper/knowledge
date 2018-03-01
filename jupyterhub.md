@@ -208,6 +208,18 @@ and added it as a service.
 * https://github.com/jupyterhub/jupyterhub/tree/master/examples/cull-idle
 
 
+### Updating TLS certificates
+
+I use [Let's Encrypt](https://letsencrypt.org/)
+to provide the certs (for running HTTPS)
+on ***siwenna*** (see [my notes](./centos.md)).
+These certs expire, and must be renewed, every 90 days.
+After renewing the certs,
+I need to restart JupyterHub.
+
+    sudo systemctl restart jupyterhub
+
+
 ### Think about
 
 * It would be great to use the
