@@ -267,3 +267,19 @@ for ideas, but use *el-get* for package management.
 Emacs has its own color palette.
 I like "AntiqueWhite1" in the foreground
 and "Gray5" in the background.
+
+
+## Building from source
+
+Use the standard GNU process.
+
+    ./configure --prefix=$HOME/local
+    make
+    make install
+
+If libraries aren't present,
+e.g., for image formats or X,
+disable them in `configure`;
+e.g., `--without-gif`.
+
+Be sure to add **$HOME/local/bin** to your path.
