@@ -108,3 +108,14 @@ Here's the `configure` command:
 The required `ncurses` library wasn't installed on blanca,
 so I built it from source;
 hence the `LDFLAGS` argument to `configure`.
+
+**Alternate**
+
+RC also built an Emacs for me. Use
+
+    module load singularity
+    singularity exec /projects/mapi8461/local/bin/emacs.img emacs
+
+They also created a module on the rhel7 nodes
+
+    module load emacs
