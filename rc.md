@@ -4,6 +4,23 @@
 maintains the [blanca](./blanca.md) conda cluster
 on which CSDMS has purchased nodes.
 
+## Help, status, and communication
+
+The help desk is invaluable:
+[rc-help@colorado.edu](mailto:rc-help@colorado.edu).
+
+Status information is provided at [statuspage.io](https://www.statuspage.io/).
+
+RC has a pair of email lists,
+which are actually Google Groups:
+[rc-news@colorado.edu](https://groups.google.com/a/colorado.edu/forum/#!forum/rc-news)
+and
+[rc-system@colorado.edu](https://groups.google.com/a/colorado.edu/forum/#!forum/rc-system).
+
+## Documentation
+
+RC documentation is now primarily hosted on GitHub,
+with a wiki: https://github.com/ResearchComputing/Research-Computing-User-Tutorials/wiki.
 
 ## Storage
 
