@@ -1,7 +1,8 @@
 # Blanca
 
 The summit and blanca clusters are administered by
-CU's Research Computing (RC) facility.
+CU's [Research Computing](./rc.md) group.
+No allocation is needed on blanca.
 
 User Guide: https://www.rc.colorado.edu/support/user-guide
 
@@ -41,6 +42,8 @@ When logged in to summit, access a compile node with:
     ssh compilenode
 
 Note that blanca doesn't have compile nodes.
+Are the filesystems shared such that I can compile on summit
+and use on blanca?
 
 
 ## Modules
@@ -75,17 +78,44 @@ For example, to transfer the file readme.md from a location on beach:
 
 You'll have to enter your password + Duo as above,
 
+RC also uses Globus for data transfer.
+Consdier setting up ***diluvium*** as an endpoint.
+
 *References:*
 
 * https://www.rc.colorado.edu/support/user-guide/file-transfer.html
-
+* https://www.globus.org
 
 ## Job control
 
 Slurm!
 
+To use Slurm commands, load the slurm/blanca module.
+
+    module load slurm/blanca
+
+This is a sticky module.
+
+Use `sbatch` to submit a job script.
+
+    sbatch --qos=blanca-csdms foo.sh
+
+Setting `--qos=blanca-csdms` also sets `--partition=blanca-csdms`.
+
+The `squeue` command is equivalent to `qstat` or `showq`.
+
+    squeue -u mapi8461
+
+See also `scancel`.
+
+The `sinteractive` command is analogous to `qsub -I`.
+
+\#SBATCH commands are the analog to \#PBS commands in a script.
+
+
 *References:*
 
+* http://slurm.schedmd.com/sbatch.html
 * [Batch queuing and job scheduling](https://www.rc.colorado.edu/support/user-guide/batch-queueing.html)
 * [Interactive jobs](https://www.rc.colorado.edu/support/user-guide/batch-queueing.html#interactive_jobs)
 
