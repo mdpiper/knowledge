@@ -9,7 +9,7 @@ on which CSDMS has purchased nodes.
 The help desk is invaluable:
 [rc-help@colorado.edu](mailto:rc-help@colorado.edu).
 
-Status information is provided at [statuspage.io](https://www.statuspage.io/).
+Status information is provided at https://curc.statuspage.io/.
 
 RC has a pair of email lists,
 which are actually Google Groups:
