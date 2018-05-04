@@ -3,54 +3,46 @@
 My experience in installing, setting up, and running
 [JupyterHub](https://github.com/jupyterhub/jupyterhub).
 
+The configuration files for Jupyter at CSDMS can be found
+[here](https://github.com/csdms/jupyterhub).
+
 
 ## Installing JupyterHub on ***siwenna***
 
-First, take care of dependencies.
-Install `npm` and `nodejs`.
-
-    sudo yum install npm nodejs
-
-This also installs the `node` executable.
-
-Install HTTP proxy and dependencies.
-
-    sudo npm install -g inherits@'2'
-    sudo npm install -g configurable-http-proxy
-
-Use the Python 3 installation in **/usr/local/anaconda3**.
-(Note that I've set "mpiper:csdms" as the user and group owners.)
-
-    PATH=/usr/local/anaconda3/bin:$PATH
-
 JupyterHub requires `python>=3.4`.
+Use the Python 3 installation in **/home/csdms/anaconda3**.
 
-Install JupyterHub.
+    PATH=/home/csdms/anaconda3/bin:$PATH
 
-    pip install jupyterhub
+(Note that I've set "mpiper:csdms" as the user and group owners,
+and set `g+w` recursively.)
 
-The current version is 0.8.
-This also retrieves and installs some dependencies.
+Install JupyterHub through `conda`.
 
-Update Jupyter Notebook.
+    conda install jupyterhub -c defaults -c conda-forge
 
-    pip install --upgrade notebook
+The current version is 0.8.1.
 
-This installed a slew of dependencies.
 
-Create a py27 environment with a full Anaconda.
-This should include `notebook` and `ipykernel`.
+### Create an environment for the CSDMS stack
 
-    conda create -n py27 python=2.7 anaconda
+Create a minimal py27 environment for the CSDMS stack.
+
+    conda create -n pymt python=2.7
 
 Activate it:
 
-    source activate py27
+    source activate pymt
+
+Install the CSDMS stack, as well as `notebook` and `ipykernel`.
+
+    (py27)$ conda install csdms-stack notebook ipykernel -c csdms-stack -c defaults -c conda-forge
 
 Register the Python 2 kernel in the Python 3 distro.
 
-    (py27)$ python -m ipykernel install --prefix=/usr/local/anaconda3 --name 'python2'
-    Installed kernelspec python2 in /usr/local/anaconda3/share/jupyter/kernels/python2
+	(py27)$ python -m ipykernel install --prefix=/home/csdms/anaconda3 --name 'pymt'
+
+    Installed kernelspec pymt in /home/csdms/anaconda3/share/jupyter/kernels/pymt
 
 For reference, view the two kernelspec files.
 
@@ -59,7 +51,7 @@ $ cd anaconda3/share/jupyter/kernels
 $ cat python3/kernel.json
 {
  "argv": [
-   "python",
+   "/home/csdms/anaconda3/bin/python",
    "-m",
    "ipykernel_launcher",
    "-f",
@@ -69,12 +61,12 @@ $ cat python3/kernel.json
  "language": "python"
 }
 
-$ cat python2/kernel.json
+$ cat pymt/kernel.json
 {
- "display_name": "Python 2",
+ "display_name": "pymt",
  "language": "python",
  "argv": [
-   "/usr/local/anaconda3/envs/py27/bin/python",
+   "/home/csdms/anaconda3/envs/pymt/bin/python",
    "-m",
    "ipykernel_launcher",
    "-f",
@@ -106,7 +98,7 @@ run JupyterHub as root.
 Executing
 
     $ su -
-	# PATH=/usr/local/anaconda3/bin:$PATH
+	# PATH=/home/csdms/anaconda3/bin:$PATH
     # jupyterhub --ip 128.138.87.12 --debug
 
 allows me to log in
@@ -148,7 +140,7 @@ of the config file.
 Place **jupyterhub_config.py** in **/etc/jupyterhub**
 and call JupyterHub with
 
-    # PATH=/usr/local/anaconda3/bin:$PATH
+    # PATH=/home/csdms/anaconda3/bin:$PATH
     # jupyterhub -f /etc/jupyterhub/jupyterhub_config.py
 
 
@@ -218,6 +210,36 @@ After renewing the certs,
 I need to restart JupyterHub.
 
     sudo systemctl restart jupyterhub
+
+
+### Using JupyterLab with JupyterHub
+
+Install JupyterLab through `conda`.
+
+    conda install jupyterlab -c defaults -c conda-forge
+
+The current version is 0.32.1.
+
+To use JupyterLab by default,
+edit the **jupyterhub_config.py** file:
+
+    c.Spawner.default_url = '/lab'
+
+Install the `jupyterlab-hub` extension with
+
+    jupyter labextension install @jupyterlab/hub-extension
+
+Update the config file to call jupyter-labhub
+
+    c.Spawner.cmd = ['jupyter-labhub']
+
+This adds the "Hub" menu to JupyterLab,
+which allows you to view the server and logoff.
+
+*References:*
+
+* https://jupyterlab.readthedocs.io/en/stable/user/jupyterhub.html
+* https://github.com/jupyterhub/jupyterlab-hub
 
 
 ### Think about
