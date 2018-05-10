@@ -34,6 +34,16 @@ RC provides several storage locations.
 
 See the Help documentation for properties of each.
 
+To see your used/available space on each filesystem, use `curc-quota`:
+```bash
+$ curc-quota
+------------------------------------------------------------------------
+                                       Used         Avail    Quota Limit
+------------------------------------------------------------------------
+/home/mapi8461                          91M          2.0G           2.0G
+/projects/mapi8461                     149G          102G           250G
+```
+
 *References:*
 
 * https://github.com/ResearchComputing/Research-Computing-User-Tutorials/wiki/File-Systems
