@@ -141,6 +141,10 @@ Find what groups a user belongs to.
 
     groups mpiper
 
+Set the primary group of an existing user.
+
+    usermod -g wmt wmtuser
+
 *References*
 
 * [Creating a group](https://www.centos.org/docs/5/html/5.1/Deployment_Guide/s2-groups-add.html) [centos.org]
