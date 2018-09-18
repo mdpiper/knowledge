@@ -33,3 +33,24 @@ or
 To run only the second of a set of tests and show all output from the test:
 
     $ ctest -I 2 --verbose
+
+## Setting rpaths for install
+
+This happened to me with the
+[bmi-fortran](https://github.com/csdms/bmi-fortran) project.
+
+My typical pattern (shown above) is to install into **../_install**.
+In **bmi-fortran**,
+I built two shared objects,
+with one dependent on the other.
+Things were fine when I built,
+but when I installed,
+the dependendent library couldn't find the independent library.
+
+The solution is to set the [rpath](https://en.wikipedia.org/wiki/Rpath)
+for this nonstandard library location.
+I added
+
+    set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
+
+to my top-level **CMakeLists.txt** file.
