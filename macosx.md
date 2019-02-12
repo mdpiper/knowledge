@@ -78,6 +78,15 @@ Even better, skip the application name:
 
 	$ open mpiper-references.pdf
 
+Open a file using a non-default application:
+
+    $ open mpiper-references.pdf -a Negative
+
+Instead of opening a file, reveal it in the Finder:
+
+    $ open mpiper-references.pdf -R
+
+
 ## Opening applications with Spotlight
 
 Use `Cmd-Space` and type. I'm a fan.
