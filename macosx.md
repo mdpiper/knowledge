@@ -11,41 +11,6 @@ From the command line
 	10.11.6
 
 
-## Homebrew
-
-I'm trying [Homebrew](http://brew.sh/) for package management
-on ***anacreon*** and ***solaria***.
-
-I want to install Bazaar and Mercurial:
-
-	$ brew info bzr hg
-	$ brew install bzr
-	$ brew install hg
-
-These packages are installed,
-and a link for them is set in **/usr/local/bin**.
-
-Nice!  I'm not sure how I went this long without Homebrew.  Mike is
-teasing me because he wrote an
-[article](http://michaelgalloy.com/2010/01/04/homebrew.html) on
-Homebrew years ago.  I replied that I was busy at the time getting
-work done in Linux, which has a built-in package management system.
-
-Installed:
-
-* `bzr`
-* `hg`
-* `wget`
-* `pandoc`
-
-To completely remove Homebrew, execute:
-
-```
-$ brew remove --force $(brew list)
-$ brew cleanup -s
-$ rm -rf $(brew --cache)
-```
-
 ## Switch between desktops
 
 I've mapped the keyboard shortcuts `<Ctrl>-<right arrow>` and
@@ -193,6 +158,42 @@ On Linux,
 the `ldd` command is used to list the shared libraries of an executable.
 On MacOS,
 the equivalent is `otool -L`. Of course, this works to find the dependent shared libraries of a shared library as well. Furthermore, use `nm` (on both Linux and Mac OS X) to find the symbols defined or used in a shared library.
+
+
+## Homebrew
+
+I'm trying [Homebrew](http://brew.sh/) for package management
+on ***anacreon*** and ***solaria***.
+
+I want to install Bazaar and Mercurial:
+
+	$ brew info bzr hg
+	$ brew install bzr
+	$ brew install hg
+
+These packages are installed,
+and a link for them is set in **/usr/local/bin**.
+
+Nice!  I'm not sure how I went this long without Homebrew.  Mike is
+teasing me because he wrote an
+[article](http://michaelgalloy.com/2010/01/04/homebrew.html) on
+Homebrew years ago.  I replied that I was busy at the time getting
+work done in Linux, which has a built-in package management system.
+
+Installed:
+
+* `bzr`
+* `hg`
+* `wget`
+* `pandoc`
+
+To completely remove Homebrew, execute:
+
+```
+$ brew remove --force $(brew list)
+$ brew cleanup -s
+$ rm -rf $(brew --cache)
+```
 
 
 ## Running pyjs examples
