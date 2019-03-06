@@ -110,3 +110,43 @@ Build and install a package using a channel to handle dependencies:
     conda build /Users/mpiper/projects/csdms-stack/conda-recipes/cca-babel -c csdms
 	conda install --use-local cca-babel -c csdms
 
+## Conda compilers
+
+Instead of relying on the OS to supply compilers,
+conda has its own:
+
+Linux:
+
+* gcc_linux-64
+* gxx_linux-64
+* gfortran_linux-64
+
+macOS:
+
+* clang_osx-64
+* clangxx_osx-64
+* gfortran_osx-64
+
+They can be conda installed.
+
+I installed MacOSX10.9.sdk to **/opt**.
+Use it in **conda_build_config.yaml** with:
+
+```yaml
+CONDA_BUILD_SYSROOT:
+  - /opt/MacOSX10.9.sdk        # [osx]
+```
+
+Use these compilers in conda build with jinja2 templates:
+
+```yaml
+requirements:
+  build:
+    - {{ compiler(‘c’) }}
+```
+
+**References**
+
+* https://www.anaconda.com/utilizing-the-new-compilers-in-anaconda-distribution-5/
+* https://conda.io/projects/conda-build/en/latest/source/resources/compiler-tools.html
+* https://conda.io/projects/conda-build/en/latest/source/resources/variants.html#conda-build-variant-config-files
