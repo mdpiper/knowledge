@@ -188,6 +188,23 @@ that doesn't appear in the file.
 I use `@`;
 the characters `\` and `|` are often used, as well.
 
+If the character "c" appears at the start of a line,
+replace it with the character "!":
+
+    $ sed -i 's@^c@!@' cgnslib_f.h
+
+Note that on macOS,
+the `-i` flag needs an extension for a backup file.
+E.g.,
+
+    $ sed -i.orig 's@^c@!@' cgnslib_f.h
+
+produces
+
+```
+cgnslib_f.h       # modified file
+cgnslib_f.h.orig  # original file, backed up
+```
 
 ## Extraction with sed
 
