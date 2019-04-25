@@ -154,6 +154,11 @@ I set up a daily `cron` job to request new certs from Certbot.
 It Does The Right Thing and checks to see whether I actually
 need new certs. If not, it returns.
 
+From ***solaria***, I can see that this certificate is being used,
+as well as its start and end dates:
+
+    curl https://siwenna.colorado.edu --verbose
+
 ### Disable SSLv3
 
 I got a nastygram from CU stating that SSLv3 had to be disabled
