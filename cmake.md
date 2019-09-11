@@ -9,16 +9,16 @@ The [CMake home page](http://www.cmake.org/).
 
 I have examples of using CMake in:
 
-* https://github.com/csdms-contrib/storm
 * https://github.com/csdms/bmi-fortran
-* https://github.com/mdpiper/fastmech
+* https://github.com/csdms/bmi-example-fortran
+* https://github.com/csdms-contrib/fastmech
 
 ## Use pattern
 
 From the source directory:
 
 	$ mkdir _build && cd _build
-	$ cmake .. -DCMAKE_INSTALL_PREFIX=../_install
+	$ cmake -DCMAKE_INSTALL_PREFIX=</path/to/install> ..
 	$ make
 	# make install
 
@@ -32,7 +32,7 @@ or
 
 To run only the second of a set of tests and show all output from the test:
 
-    $ ctest -I 2 --verbose
+    $ ctest -I2,2 --verbose
 
 ## Setting rpaths for install
 
