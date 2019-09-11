@@ -84,3 +84,25 @@ in F03.
 * http://fortranwiki.org/fortran/show/Factory+Pattern
 * http://fortranwiki.org/fortran/show/Decorator+Pattern
 * http://stackoverflow.com/a/25690402/1563298
+
+### Constructors: default and user-defined
+
+F03 creates a default constructor.
+For example, for a user-defined type `Simulation`,
+I can create an instance with
+
+    s = Simulation()
+
+You can override the default constructor by defining
+an interface for the type.
+For example, for the `Simulation` type:
+```
+interface Simulation
+   module function constructor_Simulation(ctl_data) result(this)
+     type(Simulation) :: this
+     type(Control), intent(in) :: ctl_data
+   end function
+end interface Simulation
+```
+
+See https://www.ibm.com/developerworks/community/blogs/b10932b4-0edd-4e61-89f2-6e478ccba9aa/entry/object_oriented_fortran_user_defined_constructors2?lang=en for more.
