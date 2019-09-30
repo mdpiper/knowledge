@@ -251,7 +251,7 @@ See the Redhat link below.
 
 ## Users and groups
 
-This doesn't quite fit in this page,
+This doesn't quite fit here,
 but I have to do it often enough that I'll include it.
 
 Make a new user and give them a password:
@@ -259,12 +259,16 @@ Make a new user and give them a password:
     sudo adduser saganaut
 	sudo passwd saganaut
 
-BY default, each user is included in an eponymous group.
+By default, each user is included in an eponymous group.
 To include the user in another group:
 
     sudo usermod -aG csdms saganaut
 
 Including the user in the `wheel` group grants them sudo privileges.
+
+Set the user's primary group with
+
+    sudo usermod -g csdms saganaut
 
 *References:*
 
