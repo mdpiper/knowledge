@@ -279,12 +279,18 @@ From within the branch, use:
 The "m" is for move.
 
 
-## Diff a file across branches
+## Diff across branches
 
 I want to see changes that were made to a file in a branch.
 I can compare it with the version in the master branch with:
 
     $ git diff mdpiper/prep-for-componentization master -- parameters.yaml
+
+List the files that changed across branches:
+
+    $ git diff mdpiper/fix-tests --name-only
+
+This is relative to the current branch.
 
 
 ## Stash changes
