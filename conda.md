@@ -7,6 +7,13 @@ We use `conda` at CSDMS for all our Python needs.
     conda install ipython
     conda uninstall ipython
 
+Install from a channel:
+
+    conda install pymt -c conda-forge
+
+Install from a label in a channel:
+
+    conda install pymt -c conda-forge/label/dev
 
 ## List installed packages
 
@@ -19,9 +26,14 @@ Export the list of packages for future use:
 
 ## Search for packages to install
 
+Search is only performed on current OS.
 Fragments of package names can be used.
 
     conda search cca
+
+Search channels:
+
+    conda search pymt -c conda-forge
 
 ## Using environments
 
