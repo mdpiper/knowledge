@@ -15,24 +15,42 @@ I have examples of using CMake in:
 
 ## Use pattern
 
+### Linux and macOS
+
 From the source directory:
 
-	$ mkdir _build && cd _build
-	$ cmake -DCMAKE_INSTALL_PREFIX=</path/to/install> ..
-	$ make
-	# make install
+    mkdir _build && cd _build
+    cmake -DCMAKE_INSTALL_PREFIX=</path/to/install> ..
+    make
+    make install
+
+I often build in a conda environment,
+in which case the install prefix is `$CONDA_PREFIX`.
 
 To run CTest, add:
 
-	$ make test
+    make test
 
 or
 
-    $ ctest
+    ctest
 
 To run only the second of a set of tests and show all output from the test:
 
-    $ ctest -I2,2 --verbose
+    ctest -I2,2 --verbose
+
+### Windows
+
+From the source directory:
+```
+mkdir build && cd build
+cmake -LAH -G "NMake Makefiles" ^
+  -DCMAKE_INSTALL_PREFIX:PATH=%LIBRARY_PREFIX% ^
+  -DCMAKE_PREFIX_PATH:PATH="%LIBRARY_PREFIX%" ^
+  -DCMAKE_BUILD_TYPE=Release ^
+  %SRC_DIR%
+cmake --build . --target install --config Release
+```
 
 ## Setting rpaths for install
 
