@@ -803,6 +803,31 @@ is preserved in both repositories.
 * http://gbayer.com/development/moving-files-from-one-git-repository-to-another-preserving-history/
 
 
+## Git Large File Storage (LFS)
+
+Git LFS is an extension to Git, packaged separately.
+It's available as `git-lfs` in the main conda channel.
+It's also available through `yum` and `brew`.
+
+After installing package, ensure git-lfs is set up correctly:
+
+    $ git lfs install
+    Git LFS initialized.
+
+Clone a repo with `git lfs clone`:
+
+    git lfs clone https://github.com/rmcd-mscb/bmi-test-projects.git
+
+This pulls down the entire repo.
+I'd like to get only a portion of the repo. (???)
+
+**References:**
+
+* https://git-lfs.github.com/
+* https://github.com/git-lfs/git-lfs/tree/master/docs
+* https://github.com/git-lfs/git-lfs/wiki/Tutorial
+
+
 ## Migrate a repository from SVN to GitHub
 
 The steps necessary to migrate a Subversion repository,
