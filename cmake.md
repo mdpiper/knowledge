@@ -41,16 +41,29 @@ To run only the second of a set of tests and show all output from the test:
 
 ### Windows
 
-From the source directory:
+To access the VS linker,
+`cmake` must be run
+in a [Developer Command Prompt](https://docs.microsoft.com/en-us/dotnet/framework/tools/developer-command-prompt-for-vs)
+(an Anaconda Prompt works, but not a Git Bash shell).
+Before calling `cmake`,
+set up links to VS with
+```
+cd C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build
+vcvars64.bat	
+```
+
+A typical configure-build-install sequence is:
 ```
 mkdir build && cd build
-cmake -LAH -G "NMake Makefiles" ^
-  -DCMAKE_INSTALL_PREFIX:PATH=%LIBRARY_PREFIX% ^
-  -DCMAKE_PREFIX_PATH:PATH="%LIBRARY_PREFIX%" ^
-  -DCMAKE_BUILD_TYPE=Release ^
-  %SRC_DIR%
+cmake .. ^
+  -G "NMake Makefiles" ^
+  -DCMAKE_INSTALL_PREFIX=%CONDA_PREFIX% ^
+  -DCMAKE_BUILD_TYPE=Release
 cmake --build . --target install --config Release
 ```
+The install path must be absolute, not relative.
+
+See also a conda-forge feedstock [bld.bat](https://github.com/conda-forge/ecsimplesnow-feedstock/blob/master/recipe/bld.bat), for example.
 
 ## Setting rpaths for install
 
