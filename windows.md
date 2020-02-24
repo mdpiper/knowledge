@@ -33,24 +33,17 @@ A list of other commands is given in the table below.
 
 ## Keyboard shortcuts
 
-In a command window,
-use *Shift-Enter* to copy
-and *Ctrl-v* to paste.
+| Shortcut | Description |
+| -------- | ----------- |
+| Alt-Tab | cycle through open windows |
+| Ctrl-c (or Shift-Enter) | copy |
+| Ctrl-v | paste |
+| Fn-F7 | reverse search through history |
+| Windows-e | open Windows Explorer |
+| Windows-r | open Run dialog |
+
+
 
 ## Build/install with CMake
 
-To access the VS linker,
-`cmake` must be run
-in a [Developer Command Prompt](https://docs.microsoft.com/en-us/dotnet/framework/tools/developer-command-prompt-for-vs)
-(an Anaconda Prompt works, but not a Git Bash shell).
-
-A typical configure-build-install sequence is:
-```
-mkdir _build && cd _build
-cmake .. ^
-  -G "NMake Makefiles" ^
-  -DCMAKE_INSTALL_PREFIX=%CONDA_PREFIX% ^
-  -DCMAKE_BUILD_TYPE=Release
-cmake --build . --target install --config Release
-```
-See also a conda-forge feedstock [bld.bat](https://github.com/conda-forge/ecsimplesnow-feedstock/blob/master/recipe/bld.bat), for example.
+See my [cmake](./cmake.md) notes.
