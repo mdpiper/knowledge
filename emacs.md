@@ -281,5 +281,7 @@ If libraries aren't present,
 e.g., for image formats or X,
 disable them in `configure`;
 e.g., `--without-gif`.
+(Building on ***siwenna***,
+I disabled gif, tiff, and jpeg.)
 
 Be sure to add **$HOME/local/bin** to your path.
