@@ -26,9 +26,16 @@ Set the editor (if different from default in shell):
 
     $ git config --global core.editor emacs
 
-Why does Github repeatedly ask for my username and password?
-Because I'm using an [HTTPS remote URL](https://help.github.com/articles/why-is-git-always-asking-for-my-password).
-I have the option to set up [password caching](https://help.github.com/articles/set-up-git#password-caching), but I should really be using [ssh keys](https://help.github.com/articles/connecting-to-github-with-ssh/).
+For command completion with bash:
+
+1. download the [git-completion.bash](https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash) script
+1. place it in a convenient location in your path (e.g., **~/bin**)
+1. source it in your **.bashrc**.
+
+Note that bash completion doesn't work with git installed through Anaconda
+on macOS.
+It does work with the OS git.
+(2020-06-05)
 
 ## Clone
 
@@ -49,6 +56,10 @@ which uses ssh keys for authentication.
 A directory is created locally with the name of the clone.
 This is the _working directory_.
 Specifying the name of the clone (as in the second example) is optional.
+
+(Why does Github repeatedly ask for my username and password?
+Because I'm using an [HTTPS remote URL](https://help.github.com/articles/why-is-git-always-asking-for-my-password).
+I have the option to set up [password caching](https://help.github.com/articles/set-up-git#password-caching), but I should really be using [ssh keys](https://help.github.com/articles/connecting-to-github-with-ssh/).)
 
 
 ## Status
