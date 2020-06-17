@@ -199,10 +199,10 @@ True
 ```
 
 
-Doc strings
+Docstrings
 ------------------------------------------------------------------------------
 
-Get a doc string:
+Get a docstring:
 ```python
 >>> print pow.__doc__
 ```
@@ -213,7 +213,7 @@ Alternately, use the `help` function:
 ```
 
 
-The 'os' module
+The os module
 ------------------------------------------------------------------------------
 
 The `os` module provides the equivalent of many (but not all) bash commands:
@@ -406,12 +406,6 @@ Garbage collection
 Python uses reference counting on objects, like IDL 8.0.
 
 
-OOP
-------------------------------------------------------------------------------
-
-Python uses class and instance variables.
-
-
 Array operations
 ------------------------------------------------------------------------------
 
@@ -537,3 +531,20 @@ However, is there a Pythonic solution?
 
 Yes, though not with my version of matplotlib (1.1.1rc). 
 See: http://stackoverflow.com/questions/4092927/generating-movie-from-python-without-saving-individual-frames-to-files
+
+
+OOP
+------------------------------------------------------------------------------
+
+Python uses class and instance variables.
+
+### Mixins
+
+Avoid problems with multiple inheritance by using the *mixin* design pattern.
+Mixins are classes that define and implement a single, well-defined, feature.
+See discussion and examples in the links below.
+
+*References:*
+
+* https://www.residentmar.io/2019/07/07/python-mixins.html
+* https://stackoverflow.com/a/547714
