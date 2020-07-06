@@ -31,6 +31,21 @@ A list of other commands is given in the table below.
 | ------- | --------------- | ----------- |
 | dir | ls | Directory listing |
 
+## Comments
+
+Comments are set with the double colon `::`
+```
+> :: This is a comment
+```
+
+This only works at the beginning of a line.
+
+To set a comment within a line,
+prefix it with an ampersand
+```
+> dir  &:: This is a comment
+```
+
 ## Keyboard shortcuts
 
 | Shortcut | Description |
