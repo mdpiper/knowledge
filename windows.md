@@ -50,6 +50,7 @@ prefix it with an ampersand
 
 | Shortcut | Description |
 | -------- | ----------- |
+| Alt-LShift-PrtSc | toggle high contrast |
 | Alt-Tab | cycle through open windows |
 | Ctrl-c (or Shift-Enter) | copy |
 | Ctrl-v | paste |
