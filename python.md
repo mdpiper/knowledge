@@ -533,6 +533,13 @@ Yes, though not with my version of matplotlib (1.1.1rc).
 See: http://stackoverflow.com/questions/4092927/generating-movie-from-python-without-saving-individual-frames-to-files
 
 
+Pretty print
+------------------------------------------------------------------------------
+
+For a nicely formatted print, use the `pprint` module.
+
+
+
 OOP
 ------------------------------------------------------------------------------
 
