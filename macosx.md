@@ -33,7 +33,7 @@ or of an application window:
 
 	Cmd- Shift - 4 - Space
 
-## Opening applications from shell prompt
+## Opening applications from the shell prompt
 
 To open an application from the command line, use `open`:
 
@@ -56,9 +56,17 @@ Instead of opening a file, reveal it in the Finder:
 
 Use `Cmd-Space` and type. I'm a fan.
 
+## Screen sharing with other Macs
+
+The *Screen Sharing* app lets me login to ***solaria*** from ***anacreon***,
+for example. The VPN has to be enabled.
+
+This is the macOS analogy to Remote Desktop.
+
+
 ## System resource use
 
-Use the **Activity Monitor** app instead of `top`.
+Use the *Activity Monitor* app instead of `top`.
 
 ## Symlinks
 
@@ -66,12 +74,6 @@ Symlinks are a little crankier than on Linux, requiring `sudo` and a
 target for directories. Here's an example:
 
 	$ sudo ln -s ~/projects/pyjs_test/output/ ./output
-
-## Restore tabs on Chrome
-
-I have a bad habit of hitting `Cmd-Q` on Mac, which quits an
-application. If I do this with Chrome, I can restart and restore my
-open tabs by hitting `Cmd-Shift-T`. Yay!
 
 ## Emacs meta key
 
