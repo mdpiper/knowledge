@@ -107,6 +107,10 @@ e.g.:
 
     conda skeleton pypi basic-modeling-interface
 
+Remove all built packages from a local conda distribution:
+
+    conda build purge
+	conda build purge-all
 
 ### Example
 
