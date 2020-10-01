@@ -50,7 +50,17 @@ root@a509b8f276d4:/# uname -a
 Linux a509b8f276d4 4.9.125-linuxkit #1 SMP Fri Sep 7 08:20:28 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
 ```
 
-It drop you in **/** as root with no users defined.
+It drops you in **/** as root with no users defined.
+
+Use `apt-get` to install packages.
+First, update package information:
+```
+$ apt-get update
+```
+then install any needed packages; e.g.:
+```
+apt-get install wget
+```
 
 
 ## CentOS
