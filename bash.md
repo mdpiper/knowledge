@@ -384,3 +384,24 @@ not the location given in the table.
 Reset the hash table with
 
     $ hash -r
+
+
+## Recursive sort of disk usage
+
+What directories are using the most space?
+Find out with
+```
+$ du -h | sort -h
+```
+
+To descend only one level in the filesystem, use
+```
+$ du -h -d1 | sort -h
+```
+
+For only the top ten:
+```
+$ du -h -d1 | sort -h | tail
+```
+
+So many pipes.
