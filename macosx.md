@@ -63,6 +63,11 @@ for example. The VPN has to be enabled.
 
 This is the macOS analogy to Remote Desktop.
 
+## Show hidden files in Finder
+
+Hidden files aren't shown by default in the Finder.
+Toggle behavior with `Cmd-Shift-.` (that's the period).
+The behavior is global.
 
 ## System resource use
 
