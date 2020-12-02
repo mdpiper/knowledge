@@ -545,7 +545,9 @@ OOP
 
 Python uses class and instance variables.
 
-### Mixins
+
+Mixins
+------------------------------------------------------------------------------
 
 Avoid problems with multiple inheritance by using the *mixin* design pattern.
 Mixins are classes that define and implement a single, well-defined, feature.
@@ -555,3 +557,24 @@ See discussion and examples in the links below.
 
 * https://www.residentmar.io/2019/07/07/python-mixins.html
 * https://stackoverflow.com/a/547714
+
+
+Web server
+------------------------------------------------------------------------------
+
+Python includes a simple HTTP server that allows any directory
+to be the document root.
+Start it with:
+
+    $ python -m http.server 8080
+
+The default port is 8000.
+In a web browser, open
+http://localhost:8080 or
+http://[::]:8080.
+If no **index.html** file exists,
+all files in the directory will be listed.
+
+Here's the canonical test **index.html**:
+
+    <html><body><h1>It works!</h1></body></html>

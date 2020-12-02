@@ -145,12 +145,12 @@ Python includes a simple HTTP server
 that allows any directory to be the document root.
 Start it with:
 
-    $ cd scratch
-    $ python -m SimpleHTTPServer 8080
-	
+    $ python -m http.server 8080
+
 I chose `8080`. It should be open.
 Then, in a web browser, open http://solaria.colorado.edu:8080,
-or http://127.0.0.1:8080.
+or http://127.0.0.1:8080,
+or http://[::]:8080.
 If no **index.html** file exists,
 all files in the directory will be listed.
 
