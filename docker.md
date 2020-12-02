@@ -2,22 +2,42 @@
 
 Containers are cool!
 
-
+I got a lot from the [Getting Started][getting-started] tutorial
+and the video from Dockercon 2020 that accompanies it.
 
 
 ## Dockerfile syntax
 
-The Dockerfile is the recipe that describes how to create a Docker image.
+A Dockerfile is the recipe that describes how to 
+build and populate a Docker image.
+It's a text file that contains a set of instructions.
 
-| Command | Description |
-| ------- | ----------- |
-| FROM | Base image to use. Must be first command in file |
+| Instruction | Description |
+| ----------- | ----------- |
+| FROM | Base image to use. Must be first command in file. |
+| COPY | Copy files from local filesystem to image filesystem. |
+| CMD | Run a command. There can be only one CMD instruction per file. Cf. ENTRYPOINT. |
+| ENV | Sets an environment variable. |
+| EXPOSE | Open a network port. |
+| WORKDIR | Sets the working directory in the image. |
+| # | Comment character |
+
+Instructions are run in order.
+Instructions aren't case sensitive,
+but uppercase is the convention.
+
+*References:*
+
+* Dockerfile instructions: https://docs.docker.com/engine/reference/builder/
+* Dockerfile examples: https://docs.docker.com/engine/reference/builder/#dockerfile-examples
+* Dockerfile best practices: https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
+
 
 ## Docker commands
 
 Build a Docker image:
 ```
-docker build --tag hello-world:0.1 .
+docker build --tag hello-docker:0.1 .
 ```
 The path (here `.`) is to the location of the Dockerfile.
 
@@ -33,8 +53,8 @@ docker image ls
 A container is an instance of an image.
 Launch a container from an image:
 ```
-docker run hello-world:0.1 
-docker run --publish 8080:80 --name hello --detach hello-world:0.1 
+docker run hello-docker:0.1 
+docker run --publish 8080:80 --name hello --detach hello-docker:0.1 
 ```
 Here, `--publish` opens a port on the local machine (and optionally maps it to a port inside the container, as is done here),
 `--name` names the running container, overriding the randomly generated name
@@ -72,6 +92,10 @@ docker image rm hello
 Use the `--help` flag on the `docker` command,
 as well as its subcommands and subsubcommands.
 
+*References:*
+
+* Full CLI documentation: https://docs.docker.com/reference/
+
 
 ## Using Docker Hub
 
@@ -82,18 +106,18 @@ although the source code for the image (e.g., the Dockerfile) would be under ver
 
 After building an image locally, tag it with my Docker id:
 ```
-docker tag hello-world mdpiper/hello-world
+docker tag hello-docker mdpiper/hello-docker
 ```
 This makes a new local image.
 
 Push an image to a repository on Docker Hub:
 ```
-docker push mpiper/hello-world
+docker push mpiper/hello-docker
 ```
 
 Pull an image from Docker Hub:
 ```
-docker pull mdpiper/hello-world
+docker pull mdpiper/hello-docker
 ```
 
 
@@ -194,6 +218,7 @@ There's more at https://docs.docker.com/docker-for-mac/.
 
 <!-- Links -->
 
+[getting-started]: https://docs.docker.com/get-started/
 [docker-desktop]: https://docs.docker.com/docker-for-mac/
 [hyperkit]: https://github.com/docker/HyperKit/
 [hypervisor]: https://developer.apple.com/documentation/hypervisor
