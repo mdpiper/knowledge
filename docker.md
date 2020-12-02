@@ -41,7 +41,11 @@ $ docker run hello-world
 There's more at https://docs.docker.com/docker-for-mac/.
 
 
-## Ubuntu
+## Images
+
+Docker images that I frequently use.
+
+### Ubuntu
 
 Run the Ubuntu bash image (which is very cool) with:
 ```
@@ -63,7 +67,7 @@ apt-get install wget
 ```
 
 
-## CentOS
+### CentOS
 
 Similarly, run the CentOS image with:
 ```
@@ -71,7 +75,7 @@ $ docker run -it centos
 
 ```
 
-## Miniconda
+### Miniconda
 
 Install an image preloaded with a Miniconda distribution
 in */usr/local*:
@@ -92,6 +96,67 @@ HOME_URL="https://www.debian.org/"
 SUPPORT_URL="https://www.debian.org/support"
 BUG_REPORT_URL="https://bugs.debian.org/"
 ```
+
+
+## Docker commands
+
+Build a Docker image:
+```
+docker build --tag hello-world:0.1 .
+```
+The path (here `.`) is to the location of the Dockerfile.
+
+Display a list of local images:
+```
+docker images
+```
+There's also an alternate subsubcommand syntax:
+```
+docker image ls
+```
+
+A container is an instance of an image.
+Launch a container from an image:
+```
+docker run hello-world:0.1 
+docker run --publish 8080:80 --name hello --detach hello-world:0.1 
+```
+Here, `--publish` opens a port on the local machine (and optionally maps it to a port inside the container, as is done here),
+`--name` names the running container, overriding the randomly generated name
+given to it by Docker,
+and `--detach` runs the container in the background.
+
+An image can have many running containers.
+What containers are running?
+```
+docker ps
+docker ps -a
+```
+The `-a` flag shows all containers, even those not running.
+
+Containers can be started, stopped, and removed.
+Containers are referenced by the name they're
+assigned at launch,
+not the tag of the parent image.
+```
+docker start hello
+docker stop hello
+docker rm hello
+```
+
+Get logs from an image
+```
+docker log hello
+```
+
+Remove an image from the local environment:
+```
+docker image rm hello
+```
+
+Use the `--help` flag on the `docker` command,
+as well as its subcommands and subsubcommands.
+
 
 <!-- Links -->
 
