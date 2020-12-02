@@ -98,6 +98,14 @@ BUG_REPORT_URL="https://bugs.debian.org/"
 ```
 
 
+## Dockerfile syntax
+
+The Dockerfile is the recipe that describes how to create a Docker image.
+
+| Command | Description |
+| ------- | ----------- |
+| FROM | Base image to use. Must be first command in file |
+
 ## Docker commands
 
 Build a Docker image:
@@ -156,6 +164,30 @@ docker image rm hello
 
 Use the `--help` flag on the `docker` command,
 as well as its subcommands and subsubcommands.
+
+
+## Using Docker Hub
+
+Docker Hub, https://hub.docker.com, is where you can store images.
+
+Images are stored in repositories on Docker Hub,
+although the source code for the image (e.g., the Dockerfile) would be under version control elsewhere (e.g., GitHub).
+
+After building an image locally, tag it with my Docker id:
+```
+docker tag hello-world mdpiper/hello-world
+```
+This makes a new local image.
+
+Push an image to a repository on Docker Hub:
+```
+docker push mpiper/hello-world
+```
+
+Pull an image from Docker Hub:
+```
+docker pull mdpiper/hello-world
+```
 
 
 <!-- Links -->
