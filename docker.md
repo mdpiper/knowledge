@@ -61,11 +61,16 @@ Here, `--publish` opens a port on the local machine (and optionally maps it to a
 given to it by Docker,
 and `--detach` runs the container in the background.
 
-An image can have many running containers.
+Images can have many running containers.
 What containers are running?
 ```
 docker ps
 docker ps -a
+```
+There's also an alternate subsubcommand syntax:
+```
+docker container ls
+docker container ls -a
 ```
 The `-a` flag shows all containers, even those not running.
 
