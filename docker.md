@@ -132,7 +132,33 @@ and `-t` creates a prompt.
 (The shell is minimal.)
 
 
-## Images
+## Removing images and containers
+
+After experimenting with Docker for a few days,
+I have many local images and containers.
+Instead of removing them one by one,
+I'd like to bulk remove the ones I'm not using.
+
+Remove all containers that aren't running:
+```
+docker container prune
+```
+
+Remove all unnamed images:
+```
+docker image prune
+```
+
+Remove all images, named and unnamed:
+```
+docker image prune -a
+```
+This may not be the best action
+since it also removes base images that I build on.
+These images will have to be downloaded again.
+
+
+## Base images
 
 Docker images that I frequently use.
 
