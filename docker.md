@@ -121,6 +121,17 @@ docker pull mdpiper/hello-docker
 ```
 
 
+## Run a container interactively
+
+To allow interactive access to an image with a shell prompt, use:
+```
+docker run -i -t mdpiper/hello-docker /bin/bash
+```
+where `-i` keeps stdin open
+and `-t` creates a prompt.
+(The shell is minimal.)
+
+
 ## Images
 
 Docker images that I frequently use.
