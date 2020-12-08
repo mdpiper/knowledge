@@ -109,6 +109,12 @@ Docker Hub, https://hub.docker.com, is where you can store images.
 Images are stored in repositories on Docker Hub,
 although the source code for the image (e.g., the Dockerfile) would be under version control elsewhere (e.g., GitHub).
 
+Login/logout to Docker Hub on a machine with
+```
+docker login
+docker logout
+```
+
 After building an image locally, tag it with my Docker id:
 ```
 docker tag hello-docker mdpiper/hello-docker
