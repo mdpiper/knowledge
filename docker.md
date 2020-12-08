@@ -226,6 +226,25 @@ BUG_REPORT_URL="https://bugs.debian.org/"
 ```
 
 
+## Install Docker on CentOS
+
+Install with `yum`:
+```
+sudo yum install docker.x86_64
+```
+
+Run Docker without `sudo` by adding `$USER` to the `docker ` group:
+```
+sudo groupadd docker
+sudo usermod -aG docker $USER
+```
+Logout/login for the docker daemon to recognize the updated group membership.
+
+*References:*
+
+* https://docs.docker.com/engine/install/linux-postinstall/
+
+
 ## Install Docker Desktop for Mac
 
 [Docker Desktop for Mac][docker-desktop] is a native application
