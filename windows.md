@@ -24,12 +24,33 @@ It's also used to actually set an environment variable:
 > set "BMIF_VERSION=2.0"
 ```
 
+Get help on a command with the `/?` keyword:
+```
+> set /?
+```
 
 A list of other commands is given in the table below.
 
 | Command | Bash equivalent | Description |
 | ------- | --------------- | ----------- |
 | dir | ls | Directory listing |
+| where | which | Locate file and return path |
+| mkdir | mkdir | Make a directory |
+| rmdir | rmdir | Delete a directory |
+
+
+## Path
+
+Show the current path with `set`:
+```
+set PATH
+```
+
+Prepend the path with directory `C:\Miniconda`:
+```
+set PATH=C:\Miniconda;%PATH%
+```
+
 
 ## Comments
 
@@ -46,6 +67,7 @@ prefix it with an ampersand
 > dir  &:: This is a comment
 ```
 
+
 ## Keyboard shortcuts
 
 | Shortcut | Description |
@@ -57,7 +79,6 @@ prefix it with an ampersand
 | Fn-F7 | reverse search through history |
 | Windows-e | open Windows Explorer |
 | Windows-r | open Run dialog |
-
 
 
 ## Build/install with CMake
