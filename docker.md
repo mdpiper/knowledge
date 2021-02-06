@@ -5,6 +5,12 @@ Containers are cool!
 I got a lot from the [Getting Started][getting-started] tutorial
 and the video from Dockercon 2020 that accompanies it.
 
+## Docker login
+
+Get Docker credentials on local machine with `docker login`.
+```
+docker login --username=mdpiper --password-stdin
+```
 
 ## Dockerfile syntax
 
