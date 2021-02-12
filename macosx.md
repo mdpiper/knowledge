@@ -69,6 +69,11 @@ Hidden files aren't shown by default in the Finder.
 Toggle behavior with `Cmd-Shift-.` (that's the period).
 The behavior is global.
 
+## Magnifier
+
+Pressing `Ctrl-Option` turns on a magnification window.
+Use the mouse to move it around.
+
 ## System resource use
 
 Use the *Activity Monitor* app instead of `top`.
