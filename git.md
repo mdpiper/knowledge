@@ -366,6 +366,19 @@ To delete a tag, both locally and at the origin, use:
 I never make mistakes.
 
 
+## Backdate a tag
+
+I've done this a few times.
+Use the environment variable `GIT_COMMITTER_DATE`; e.g.,
+```
+$ GIT_COMMITTER_DATE="2020-03-10 16:06" git tag v0.1 -m "Initial version with output from bmi-render"
+```
+
+**Reference:**
+
+* https://git-scm.com/docs/git-tag#_on_backdating_tags
+
+
 ## Keep a feature branch in sync with the master branch
 
 I have a repository,
