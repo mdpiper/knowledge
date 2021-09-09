@@ -150,3 +150,15 @@ Set the primary group of an existing user.
 * [Creating a group](https://www.centos.org/docs/5/html/5.1/Deployment_Guide/s2-groups-add.html) [centos.org]
 * [Creating a user](https://www.centos.org/docs/5/html/5.1/Deployment_Guide/s2-users-add.html) [centos.org]
 * [Making a sudo user](https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-centos-quickstart) [digitalocean.com]
+
+
+## Filesystem Hierarchy Standard (FHS)
+
+The FHS specifies the names and roles of the standard directories in a Linux distribution.
+The references below give some guidance as to what goes where.
+
+*References*
+
+* [Wikipedia entry](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
+* [Official home, including specification](https://wiki.linuxfoundation.org/lsb/fhs)
+* [Some random old RH docs](https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-rg-en-4/s1-filesystem-fhs.html)
