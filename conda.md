@@ -78,6 +78,20 @@ Remove an environment, including all installed packages, with
 * https://conda.io/docs/user-guide/tasks/manage-environments.html
 
 
+## Reproduceable environments
+
+I've run into the situation that
+when attempting to create an environment from an older environment file,
+it fails because of incompatible dependencies.
+A possible solution for this problem is `conda-lock`.
+See the referenced blog post below for an example.
+
+**References**
+
+* https://pythonspeed.com/articles/conda-dependency-management/
+* https://github.com/conda-incubator/conda-lock/
+
+
 ## Conda packaging
 
 (Perhaps this should be a separate note?)
