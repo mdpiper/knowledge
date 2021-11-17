@@ -3,7 +3,7 @@
 [Apache Ant](http://ant.apache.org/)
 is used to build and deploy [Java](./java.md) applications.
 
-See also my [Eclipse](./eclipse.md) notes.
+See also my [Maven](./maven.md) and [Eclipse](./eclipse.md) notes.
 
 ## Building a project from the command line
 

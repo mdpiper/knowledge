@@ -3,7 +3,7 @@
 Eclipse is really nice for working with [Java](./java.md).
 I prefer it over Emacs or vi.
 
-See also my notes on using [ant](./ant.md).
+See also my notes on using [Ant](./ant.md) and [Maven](./maven.md).
 
 ## Breakpoints
 

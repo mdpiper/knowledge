@@ -5,7 +5,7 @@ It's verbose, but I like it.
 I'm not yet up to speed on some of the more advanced techniques.
 
 It really pays to develop with [Eclipse](./eclipse.md).
-See also [ant](./ant.md).
+See also my [Ant](./ant.md) and [Maven](./maven.md) notes.
 
 ## Generic methods
 
