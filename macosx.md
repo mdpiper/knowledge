@@ -16,7 +16,7 @@ From the command line
 I've mapped the keyboard shortcuts `<Ctrl>-<right arrow>` and
 `<Ctrl>-<left arrow>` to move between Desktops on ***solaria***.
 
-You can also use the `F3` key to get Expose (shows an overview of
+You can also use the `F3` key or `<Ctrl>-<up arrow>` to get Expose (shows an overview of
 what's on all Desktops).
 
 ## Screenshots
