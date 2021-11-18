@@ -7,7 +7,11 @@ It supersedes `ant`.
 See also my [ant](./ant.md), [java](./java.md), and [eclipse](./eclipse.md) notes.
 
 
-## Test, build, doc
+## Build, test, doc
+
+The one command to rule them all:
+
+    $ mvn verify
 
 Run tests in a Maven project:
 ```
@@ -19,8 +23,19 @@ $ mvn package
 ```
 Generate docs:
 ```
+$ mvn javadoc:fix
 $ mvn javadoc:javadoc
 ```
+Check style:
+```
+$ mvn checkstyle:checkstyle
+```
+
+
+## Maven repository
+
+Where does Maven store the code for all of its commands?  
+In `~/.m2/repository`.
 
 
 ## Import a Maven project into Eclipse
