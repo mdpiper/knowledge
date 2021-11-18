@@ -33,7 +33,7 @@ in my case, it's
 I added
 ```
 * {
-    font-size: 18;
+    font-size: calc(12px + 1.5vw);
 }
 ```
 and restarted Eclipse.
@@ -41,3 +41,4 @@ and restarted Eclipse.
 *References:*
 
 * https://apple.stackexchange.com/a/309209
+* https://stackoverflow.com/a/37836926
