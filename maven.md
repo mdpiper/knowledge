@@ -7,7 +7,7 @@ It supersedes `ant`.
 See also my [ant](./ant.md), [java](./java.md), and [eclipse](./eclipse.md) notes.
 
 
-## Build, test, doc
+## Build, test, doc, clean
 
 The one command to rule them all:
 
@@ -30,6 +30,9 @@ Check style:
 ```
 $ mvn checkstyle:checkstyle
 ```
+Clean all build artifacts:
+
+    $ mvn clean
 
 
 ## Maven repository
