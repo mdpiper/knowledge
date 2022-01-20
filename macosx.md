@@ -206,30 +206,3 @@ $ brew remove --force $(brew list)
 $ brew cleanup -s
 $ rm -rf $(brew --cache)
 ```
-
-
-## Running pyjs examples
-
-The stock pyjs examples can be executed from:
-
-	http://localhost/pyjs-examples/
-
-My pyjs examples can be executed from:
-
-	http://localhost/mp-pyjs-examples/
-
-I set up this directory in **/etc/apache2/httpd.conf** (at the very end) with:
-
-	<IfModule alias_module>
-		Alias /mp-pyjs-examples "/Users/mpiper/projects/pyjs/examples/"
-	</IfModule>
-	<Directory "/Users/mpiper/projects/pyjs/examples/">
-		Options Indexes MultiViews FollowSymLinks +ExecCGI
-		AllowOverride None
-		Order deny,allow
-		Deny from all
-		Allow from 127.0.0.0/255.0.0.0 ::1/128
-		AddHandler cgi-script .py
-	</Directory>
-
-
