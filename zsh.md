@@ -21,6 +21,10 @@ Use the `prompt` command.
 
 I created a few custom prompts and stored them in my `.zprompts` file,
 which, if present, is loaded by my `.zshrc` file.
+My favorite right now is
+```zsh
+prompt ithaca
+```
 
 *Resources:*
 
