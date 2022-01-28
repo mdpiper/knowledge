@@ -32,3 +32,11 @@ prompt ithaca
 * [Expansion of prompt sequences](https://man.archlinux.org/man/zshmisc.1#EXPANSION_OF_PROMPT_SEQUENCES), also from the Arch Linux docs
 * An [xterm 256 color](https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg) chart
 * ohmyzsh [themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes)
+
+
+## Paths
+
+This [gist](https://gist.github.com/Linerre/f11ad4a6a934dcf01ee8415c9457e7b2)
+was helpful for decoding mysterious path ordering on macOS.
+
+I ended up moving the code to set path from `.zshenv` to `.zprofile`.
