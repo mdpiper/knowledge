@@ -38,9 +38,9 @@ Almost.
 It didn't get the JRE location right.
 To fix this, in Eclipse,
 find *Java > Installed JREs* in the Preferences.
-I had a JDK 1.7;
+I had a JDK 7;
 add a *MacOS X VM* (their language) using the similar path
-to the JDK 1.8 on the system.
+to the JDK 8 on the system.
 
 
 ### Possible alternative
