@@ -19,7 +19,8 @@ I had waaay too much fun with zsh prompts.
 
 Use the `prompt` command.
 
-I created a few custom prompts and stored them in my `.zprompts` file,
+I created a few [custom prompts](https://github.com/mdpiper/dotfiles/blob/main/zprompts)
+and placed them in my `.zprompts` file,
 which, if present, is loaded by my `.zshrc` file.
 My favorite right now is
 ```zsh
