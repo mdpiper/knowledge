@@ -162,3 +162,31 @@ The references below give some guidance as to what goes where.
 * [Wikipedia entry](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)
 * [Official home, including specification](https://wiki.linuxfoundation.org/lsb/fhs)
 * [Some random old RH docs](https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-rg-en-4/s1-filesystem-fhs.html)
+
+
+## GNU Screen
+
+`screen` is a terminal multiplexer.
+With it, you can create multiple virtual windows, each with a shell.
+It's especially useful for running multiple jobs on a remote host;
+jobs are automatically run in the background,
+and if the remote connection is lost,
+the jobs continue to run.
+On reconnection to the host, you can reconnect to the `screen` session.
+
+There are a bunch of control sequences to work with windows
+in a `screen` session.
+See the references below.
+
+A typical `screen` workflow:
+
+1. Start `screen`
+1. Run a job
+1. Detach from `screen` with `Ctrl-a + Ctrl-d`
+1. Do other stuff
+1. Reattach to the session with `screen -r`
+
+*References*
+
+* A helpful [overview](https://wiki.archlinux.org/title/GNU_Screen) from Arch Linux
+* The [Screen user's manual](https://www.gnu.org/software/screen/manual/screen.html)
