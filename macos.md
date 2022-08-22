@@ -78,6 +78,13 @@ Use the mouse to move it around.
 
 Use the *Activity Monitor* app instead of `top`.
 
+## Rename terminal tab title
+
+I should do this programmatically in bash or zsh,
+but it's easy to do manually:
+type `Shift-Cmd-i`,
+then edit the tab title in the Finder info window.
+
 ## Symlinks
 
 Symlinks are a little crankier than on Linux, requiring `sudo` and a
