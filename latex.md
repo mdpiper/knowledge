@@ -13,7 +13,7 @@ To latex the heck out of a document and produce a PDF, just type
     $ latexmk -pdf
 
 Latexmk will figure out what file to compile,
-whether there are biblographies, etc.
+whether there are bibliographies, etc.
 
 To clean up intermediate and output files when finished, use
 
