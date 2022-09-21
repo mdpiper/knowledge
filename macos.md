@@ -1,7 +1,6 @@
 # macOS
 
-I'm still a Linux guy, but I'm warming to Macs.
-
+I'm still a Linux guy, but I'm warming to macOS.
 
 ## Find macOS version
 
@@ -9,7 +8,6 @@ From the command line
 
     $ sw_vers -productVersion
 	10.11.6
-
 
 ## Switch between desktops
 
@@ -50,7 +48,6 @@ Open a file using a non-default application:
 Instead of opening a file, reveal it in the Finder:
 
     $ open mpiper-references.pdf -R
-
 
 ## Opening applications with Spotlight
 
@@ -170,14 +167,12 @@ Here's the canonical test **index.html**:
 
     <html><body><h1>It works!</h1></body></html>
 
-
 ## List shared libraries of an executable
 
 On Linux,
 the `ldd` command is used to list the shared libraries of an executable.
 On MacOS,
 the equivalent is `otool -L`. Of course, this works to find the dependent shared libraries of a shared library as well. Furthermore, use `nm` (on both Linux and Mac OS X) to find the symbols defined or used in a shared library.
-
 
 ## Homebrew
 
@@ -213,3 +208,15 @@ $ brew remove --force $(brew list)
 $ brew cleanup -s
 $ rm -rf $(brew --cache)
 ```
+
+## LaTeX distribution
+
+Use [MacTeX](https://tug.org/mactex/),
+which is a macOS-specific build of [TeX Live](https://www.tug.org/texlive/).
+It's an all-in-one package,
+so it's a big download.
+[BasicTeX](https://tug.org/mactex/morepackages.html) may be an alternative,
+but it requires additional packages.
+
+Install through Homebrew;
+see https://formulae.brew.sh/cask/mactex.
