@@ -140,6 +140,13 @@ Recursively search subdirectories for a pattern:
 
 Don't forget the path specification at the end.
 
+Grep for multiple strings with an OR operator:
+
+    $ conda list -n dev | grep -E 'cython|compiler'
+
+The `-E` flag is for extended grep.
+It means we don't have to escape the `|` operator.
+
 Include only files that match a glob:
 
     $ grep -r --include=*.ncl ILAMB_PARA_SETUP .
