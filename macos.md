@@ -17,19 +17,43 @@ I've mapped the keyboard shortcuts `<Ctrl>-<right arrow>` and
 You can also use the `F3` key or `<Ctrl>-<up arrow>` to get Expose (shows an overview of
 what's on all Desktops).
 
+## Network statistics
+
+Test internet upload/download speed,
+network responisiveness, latency, etc., with:
+```
+networkQuality -v
+```
+Result:
+```
+==== SUMMARY ====
+Uplink capacity: 10.366 Mbps (Accuracy: High)
+Downlink capacity: 326.977 Mbps (Accuracy: High)
+Responsiveness: Medium (212 RPM) (Accuracy: High)
+Idle Latency: 105.292 milliseconds (Accuracy: High)
+Interface: en1
+Uplink bytes transferred: 16.422 MB
+Downlink bytes transferred: 431.721 MB
+Uplink Flow count: 8
+Downlink Flow count: 16
+Start: 9/18/23, 6:30:21 AM
+End: 9/18/23, 6:30:33 AM
+OS Version: Version 13.5.2 (Build 22G91)
+```
+
 ## Screenshots
 
 Take a screenshot of the entire screen:
 
-	Cmd - Shift - 3
+	Cmd-Shift-3
 
 or of a chosen area:
 
-	Cmd - Shift - 4
+	Cmd-Shift-4
 
 or of an application window:
 
-	Cmd- Shift - 4 - Space
+	Cmd-Shift-4-Space
 
 ## Opening applications from the shell prompt
 
