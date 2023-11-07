@@ -17,6 +17,14 @@ I've mapped the keyboard shortcuts `<Ctrl>-<right arrow>` and
 You can also use the `F3` key or `<Ctrl>-<up arrow>` to get Expose (shows an overview of
 what's on all Desktops).
 
+## Install Xcode Command Line Tools
+
+I use the `git` and `make` installed with macOS,
+which require the Xcode Command Line Tools.
+Install them with:
+
+	xcode-select --install
+
 ## Network statistics
 
 Test internet upload/download speed,
