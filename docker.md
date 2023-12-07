@@ -22,13 +22,14 @@ It's a text file that contains a set of instructions.
 | ----------- | ----------- |
 | FROM | Base image to use. Must be first command in file. |
 | COPY | Copy files from local filesystem to image filesystem. |
-| CMD | Run a command. There can be only one CMD instruction per file. Cf. ENTRYPOINT. |
+| CMD | Run a command, intended as the default for a container. There can be only one CMD instruction per file. Cf. ENTRYPOINT and RUN. |
 | ENV | Sets an environment variable. |
 | EXPOSE | Open a network port. |
+| RUN | Execute a command. |
 | WORKDIR | Sets the working directory in the image. |
 | # | Comment character |
 
-Instructions are run in order.
+Instructions are layered in order.
 Instructions aren't case sensitive,
 but uppercase is the convention.
 
@@ -90,11 +91,6 @@ docker stop hello
 docker rm hello
 ```
 
-Get logs from an image
-```
-docker log hello
-```
-
 Remove an image from the local environment:
 ```
 docker image rm hello
@@ -106,6 +102,33 @@ as well as its subcommands and subsubcommands.
 *References:*
 
 * Full CLI documentation: https://docs.docker.com/reference/
+
+
+### Run a container interactively
+
+To allow interactive access to a container with a shell prompt, use:
+```
+docker run -it mdpiper/hello-docker /bin/bash
+```
+where `-i` keeps stdin open
+and `-t` creates a prompt.
+The shell is minimal.
+I've omitted the shell, and it seems like bash is the default.
+
+
+### Logging
+
+Get logs from an image:
+```
+docker log hello
+```
+
+I've also used a shell method for capturing a build log:
+```bash
+docker build --tag joss-6079 . 2>&1 | tee build.log
+```
+The `docker build` output goes to stderr.
+The `tee` command writes the output both to the terminal and my log file.
 
 
 ## Using Docker Hub
@@ -136,18 +159,6 @@ Pull an image from Docker Hub:
 ```
 docker pull mdpiper/hello-docker
 ```
-
-
-## Run a container interactively
-
-To allow interactive access to an image with a shell prompt, use:
-```
-docker run -i -t mdpiper/hello-docker /bin/bash
-```
-where `-i` keeps stdin open
-and `-t` creates a prompt.
-(The shell is minimal.)
-
 
 ## Removing images and containers
 
