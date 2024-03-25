@@ -303,6 +303,10 @@ List the files that changed across branches:
 
 This is relative to the current branch.
 
+See the differences between two branches:
+
+    $ git diff main..fix-changelog-bug
+
 
 ## Stash changes
 
