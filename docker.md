@@ -234,6 +234,23 @@ The `base` environment is activated.
 
 For more information, see https://hub.docker.com/r/continuumio/miniconda3.
 
+### Miniforge and Mambaforge
+
+Since we build all CSDMS software on conda-forge,
+it's best to use the miniforge and mambaforge distributions they create.
+Install an image preloaded with a mambaforge distribution
+in */opt/conda*:
+```
+docker pull condaforge/mambaforge
+docker run -i -t condaforge/mambaforge /bin/bash
+```
+
+The OS is Ubuntu.
+The `base` environment is activated.
+
+For more information, see https://hub.docker.com/r/condaforge/mambaforge.
+
+
 ## Install Docker on CentOS
 
 Install with `yum`:
