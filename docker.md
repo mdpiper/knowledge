@@ -223,25 +223,16 @@ $ docker run -it centos
 ### Miniconda
 
 Install an image preloaded with a Miniconda distribution
-in */usr/local*:
+in */opt/conda*:
 ```
-docker pull conda/miniconda3
-docker run -i -t conda/miniconda3 /bin/bash
-```
-
-The OS is Linux/Debian:
-```
-$ cat /etc/os-release
-PRETTY_NAME="Debian GNU/Linux 9 (stretch)"
-NAME="Debian GNU/Linux"
-VERSION_ID="9"
-VERSION="9 (stretch)"
-ID=debian
-HOME_URL="https://www.debian.org/"
-SUPPORT_URL="https://www.debian.org/support"
-BUG_REPORT_URL="https://bugs.debian.org/"
+docker pull continuumio/miniconda3
+docker run -i -t continuumio/miniconda3 /bin/bash
 ```
 
+The OS is Linux/Debian.
+The `base` environment is activated.
+
+For more information, see https://hub.docker.com/r/continuumio/miniconda3.
 
 ## Install Docker on CentOS
 
