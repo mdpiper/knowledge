@@ -2,6 +2,13 @@
 
 Notes that don't fit in other places.
 
+## NeverSSL
+
+When attempting to login to a wireless network (like UCB Wireless),
+open a web browser,
+and if not automatically redirected,
+go to [neverssl.com](http://neverssl.com) to get a signin prompt.
+
 ## Downloading Dropbox links
 
 I received a link to a Dropbox folder
