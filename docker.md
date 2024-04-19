@@ -85,6 +85,34 @@ This may not be the best action
 since it also removes base images that I build on.
 These images will have to be downloaded again.
 
+*References:*
+
+* Full CLI documentation: https://docs.docker.com/reference/
+
+### Multiplatform builds
+
+I have an Intel-based iMac and an M1 MacBook Pro.
+By default, images built on one won't work on the other.
+I need a multiplatform build.
+
+Use the `docker buildx ls` command to see the current list of builders.
+I have the default.
+Create a new builder with:
+```
+docker buildx create --name arm-and-amd --bootstrap --use
+```
+I set up a simple example in mdpiper/docker-cases/multiplatform.
+Build it for two platforms, `arm64` and `amd64`,
+then push the images to Docker Hub,
+with:
+```
+docker buildx build --platform linux/amd64,linux/arm64 -t mdpiper/multiplatform:latest --push .
+```
+
+*References:*
+
+  * https://docs.docker.com/build/building/multi-platform/
+
 ### Build logs
 
 Get logs from an image build:
@@ -98,10 +126,6 @@ docker build --tag joss-6079 . 2>&1 | tee build.log
 ```
 The `docker build` output goes to stderr.
 The `tee` command writes the output both to the terminal and my log file.
-
-*References:*
-
-* Full CLI documentation: https://docs.docker.com/reference/
 
 ## Containers
 
