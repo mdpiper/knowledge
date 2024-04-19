@@ -12,6 +12,11 @@ Get Docker credentials on local machine with `docker login`.
 docker login --username=mdpiper --password-stdin
 ```
 
+## Docker version
+
+Use the `docker version` subcommand (instead of `docker --version`)
+to get more detailed version information on the Docker client and server.
+
 ## Dockerfile syntax
 
 A Dockerfile is the recipe that describes how to 
