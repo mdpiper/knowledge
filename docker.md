@@ -12,10 +12,15 @@ Get Docker credentials on local machine with `docker login`.
 docker login --username=mdpiper --password-stdin
 ```
 
-## Docker version
+## Docker information
+
+The `docker info` subcommand displays system information.
 
 Use the `docker version` subcommand (instead of `docker --version`)
 to get more detailed version information on the Docker client and server.
+
+Use the `--help` flag on the `docker` command,
+as well as its subcommands and subsubcommands.
 
 ## Dockerfile syntax
 
@@ -45,7 +50,7 @@ but uppercase is the convention.
 * Dockerfile best practices: https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
 
 
-## Docker commands
+## Images
 
 Build a Docker image:
 ```
@@ -61,6 +66,44 @@ There's also an alternate subsubcommand syntax:
 ```
 docker image ls
 ```
+
+Remove an image from the local environment:
+```
+docker image rm hello
+```
+
+Remove all unnamed images:
+```
+docker image prune
+```
+
+Remove all images, named and unnamed:
+```
+docker image prune -a
+```
+This may not be the best action
+since it also removes base images that I build on.
+These images will have to be downloaded again.
+
+### Build logs
+
+Get logs from an image build:
+```
+docker log hello
+```
+
+I've also used a shell method for capturing a build log:
+```bash
+docker build --tag joss-6079 . 2>&1 | tee build.log
+```
+The `docker build` output goes to stderr.
+The `tee` command writes the output both to the terminal and my log file.
+
+*References:*
+
+* Full CLI documentation: https://docs.docker.com/reference/
+
+## Containers
 
 A container is an instance of an image.
 Launch a container from an image:
@@ -96,13 +139,10 @@ docker stop hello
 docker rm hello
 ```
 
-Remove an image from the local environment:
+Remove all containers that aren't running:
 ```
-docker image rm hello
+docker container prune
 ```
-
-Use the `--help` flag on the `docker` command,
-as well as its subcommands and subsubcommands.
 
 *References:*
 
@@ -121,22 +161,7 @@ The shell is minimal.
 I've omitted the shell, and it seems like bash is the default.
 
 
-### Logging
-
-Get logs from an image:
-```
-docker log hello
-```
-
-I've also used a shell method for capturing a build log:
-```bash
-docker build --tag joss-6079 . 2>&1 | tee build.log
-```
-The `docker build` output goes to stderr.
-The `tee` command writes the output both to the terminal and my log file.
-
-
-## Using Docker Hub
+## Docker Hub
 
 Docker Hub, https://hub.docker.com, is where you can store images.
 
@@ -164,32 +189,6 @@ Pull an image from Docker Hub:
 ```
 docker pull mdpiper/hello-docker
 ```
-
-## Removing images and containers
-
-After experimenting with Docker for a few days,
-I have many local images and containers.
-Instead of removing them one by one,
-I'd like to bulk remove the ones I'm not using.
-
-Remove all containers that aren't running:
-```
-docker container prune
-```
-
-Remove all unnamed images:
-```
-docker image prune
-```
-
-Remove all images, named and unnamed:
-```
-docker image prune -a
-```
-This may not be the best action
-since it also removes base images that I build on.
-These images will have to be downloaded again.
-
 
 ## Base images
 
