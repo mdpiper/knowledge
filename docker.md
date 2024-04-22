@@ -5,6 +5,8 @@ Containers are cool!
 I got a lot from the [Getting Started][getting-started] tutorial
 and the video from Dockercon 2020 that accompanies it.
 
+I also have a [repository of Docker examples](https://github.com/mdpiper/docker-examples).
+
 ## Docker login
 
 Get Docker credentials on local machine with `docker login`.
