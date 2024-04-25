@@ -308,6 +308,37 @@ See the differences between two branches:
     $ git diff main..fix-changelog-bug
 
 
+## Cherry pick a commit from another branch
+
+A process that uses `git cherry-pick` to copy changes from one persistent branch to another.
+
+1. Base feature branches on `develop`.
+2. PR into `develop`.
+3. After successful review, **Squash and merge** the PR.
+4. Cherry pick the merge commit back into `stable`.
+
+      `git cherry-pick -x COMMIT`
+
+    This makes a new commit in `stable`. This means I won't be able to merge either branch into the other because there will be duplicate commits. (Merging isn't precluded, it's just that branch history will be polluted with duplicate commits.)
+
+Users don't need to know or care about `stable`; it's just my branch for making the docs.
+
+This process should address the problem of being able to apply changes in a feature branch to both persistent branches.
+
+*Notes:*
+
+* Perhaps, for BMI, consider renaming `stable` to `v2.0`. Or not, because `v2.0` might be confusing, while `stable` is persistent. Or yes, because I could simply redirect the pointer on Read The Docs.
+* Better: after a release, delete and renew the `stable` branch.
+* Alternatively,
+new features should be based off of `develop`,
+while updates to existing documentation should be based off of `stable`.
+I'll cherry-pick in each direction.
+
+*References:*
+
+* `cherry-pick` docs: https://git-scm.com/docs/git-cherry-pick
+
+
 ## Stash changes
 
 This is neat.
