@@ -77,6 +77,36 @@ Remove an environment, including all installed packages, with
 
 * https://conda.io/docs/user-guide/tasks/manage-environments.html
 
+## Setting environment variables in an environment file
+
+You can set environment variables in a conda environment file.
+They're set when the environment is activated.
+For example:
+```yaml
+name: claw
+channels:
+  - conda-forge
+dependencies:
+  - python =3
+  - make
+  - fortran-compiler
+  - meson
+  - ninja
+  - numpy
+  - spin
+  - pytest
+  - matplotlib
+  - ipython
+  - ipykernel
+  - pip:
+    - meson-python
+variables:
+  CLAW: /opt/clawpack
+```
+
+**Reference**
+
+* https://stackoverflow.com/a/62508395
 
 ## Reproduceable environments
 
