@@ -295,10 +295,15 @@ sudo usermod -aG docker $USER
 ```
 Logout/login for the docker daemon to recognize the updated group membership.
 
+Start/stop/status the docker daemon with:
+```
+sudo systemctl start docker
+```
+
 *References:*
 
 * https://docs.docker.com/engine/install/linux-postinstall/
-
+* https://stackoverflow.com/a/46329423
 
 ## Install Docker Desktop for Mac
 
