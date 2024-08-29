@@ -103,7 +103,7 @@ Create a new builder with:
 ```
 docker buildx create --name arm-and-amd --bootstrap --use
 ```
-I set up a simple example in mdpiper/docker-cases/multiplatform.
+I set up a simple example in mdpiper/docker-examples/multiplatform.
 Build it for two platforms, `arm64` and `amd64`,
 then push the images to Docker Hub,
 with:
@@ -114,6 +114,19 @@ docker buildx build --platform linux/amd64,linux/arm64 -t mdpiper/multiplatform:
 *References:*
 
   * https://docs.docker.com/build/building/multi-platform/
+
+### Automated build and push
+
+GitHub Actions workflows can be set up to build and push Docker images to Docker Hub.
+Docker provides the following actions:
+
+* [Build and push Docker images](https://github.com/marketplace/actions/build-and-push-docker-images)
+* [Docker Setup Buildx](https://github.com/marketplace/actions/docker-setup-buildx)
+* [Docker Login](https://github.com/marketplace/actions/docker-login)
+
+In the [mdpiper/hello-docker](https://github.com/mdpiper/hello-docker) repository,
+I made a demonstration workflow to build and push an image when a repository is tagged;
+see the workflow file [release.yml](https://github.com/mdpiper/hello-docker/blob/main/.github/workflows/release.yml).
 
 ### Build logs
 
