@@ -130,12 +130,7 @@ see the workflow file [release.yml](https://github.com/mdpiper/hello-docker/blob
 
 ### Build logs
 
-Get logs from an image build:
-```
-docker log hello
-```
-
-I've also used a shell method for capturing a build log:
+I've used a shell method for capturing a build log:
 ```bash
 docker build --tag joss-6079 . 2>&1 | tee build.log
 ```
