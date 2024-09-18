@@ -137,6 +137,16 @@ docker build --tag joss-6079 . 2>&1 | tee build.log
 The `docker build` output goes to stderr.
 The `tee` command writes the output both to the terminal and my log file.
 
+### Dockerfile names
+
+By default,
+Docker looks for a file `Dockerfile`.
+Alternatively--for example, if more than one Dockerfile lives in a repository--a file can be specified with the `--file` keyword:
+```bash
+docker build --tag workbench --file csdms-workbench.dockerfile .
+```
+The `.dockerfile` extension is used by convention.
+
 ## Containers
 
 A container is an instance of an image.
