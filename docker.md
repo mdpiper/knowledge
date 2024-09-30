@@ -49,8 +49,10 @@ but uppercase is the convention.
 
 * Dockerfile instructions: https://docs.docker.com/engine/reference/builder/
 * Dockerfile examples: https://docs.docker.com/engine/reference/builder/#dockerfile-examples
-* Dockerfile best practices: https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
-
+* Dockerfile best practices:
+  * https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
+  * https://docs.docker.com/build/building/best-practices/
+  * https://github.com/dnaprawa/dockerfile-best-practices 
 
 ## Images
 
