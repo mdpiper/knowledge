@@ -1,6 +1,6 @@
 # Windows
 
-Notes on using Windows, especially at the command prompt.
+Notes on using Windows, especially at the command prompt with Powershell.
 
 ## Commands
 
@@ -37,6 +37,10 @@ A list of other commands is given in the table below.
 | where | which | Locate file and return path |
 | mkdir | mkdir | Make a directory |
 | rmdir | rmdir | Delete a directory |
+| head | head | Display first 10 lines of file |
+| tail | tail | Display last 10 lines of file |
+| more | more | Pager |
+| less | less | Pager |
 
 
 ## Path
