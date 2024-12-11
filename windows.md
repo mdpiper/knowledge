@@ -2,14 +2,21 @@
 
 Notes on using Windows, especially at the command prompt with Powershell.
 
-## Commands
+## Cmd
 
-The `set` command behaves like `echo`:
+Show the value of an environment variable:
+```cmd
+> echo %USERNAME%
+Mark
 ```
-> set CONDA_PREFIX
-CONDA_PREFIX=C:\Users\Mark\Anaconda3\envs\bmic
+
+Show the value of an environment variable:
+```cmd
+> set USERNAME
+USERNAME=Mark
 ```
-It also matches a prefix:
+
+The `set` command also matches a prefix:
 ```
 > set CONDA_
 CONDA_DEFAULT_ENV=bmic
@@ -19,10 +26,35 @@ CONDA_PROMPT_MODIFIER=(bmic)
 CONDA_PYTHON_EXE=C:\Users\Mark\Anaconda3\python.exe
 CONDA_SHLVL=1
 ```
+
 It's also used to actually set an environment variable:
 ```
 > set "BMIF_VERSION=2.0"
+> set BMIF
+BMIF_VERSION=2.0
 ```
+
+Show the current path with `set`:
+```
+set PATH
+```
+
+Prepend the path with directory `C:\Miniconda`:
+```
+set PATH=C:\Miniconda;%PATH%
+```
+
+
+## Pwsh
+
+Show the value of an environment variable:
+```pwsh
+> echo $env:USERNAME
+Mark
+```
+
+
+## Commands
 
 Get help on a command with the `/?` keyword:
 ```
@@ -41,19 +73,6 @@ A list of other commands is given in the table below.
 | tail | tail | Display last 10 lines of file |
 | more | more | Pager |
 | less | less | Pager |
-
-
-## Path
-
-Show the current path with `set`:
-```
-set PATH
-```
-
-Prepend the path with directory `C:\Miniconda`:
-```
-set PATH=C:\Miniconda;%PATH%
-```
 
 
 ## Comments
@@ -83,8 +102,3 @@ prefix it with an ampersand
 | Fn-F7 | reverse search through history |
 | Windows-e | open Windows Explorer |
 | Windows-r | open Run dialog |
-
-
-## Build/install with CMake
-
-See my [cmake](./cmake.md) notes.
