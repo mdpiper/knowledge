@@ -17,7 +17,7 @@ USERNAME=Mark
 ```
 
 The `set` command also matches a prefix:
-```
+```cmd
 > set CONDA_
 CONDA_DEFAULT_ENV=bmic
 CONDA_EXE=C:\Users\Mark\Anaconda3\Scripts\conda.exe
@@ -28,10 +28,12 @@ CONDA_SHLVL=1
 ```
 
 It's also used to actually set an environment variable:
-```
+```cmd
 > set "BMIF_VERSION=2.0"
 > set BMIF
 BMIF_VERSION=2.0
+> echo %BMIF_VERSION%
+2.0
 ```
 
 Show the current path with `set`:
