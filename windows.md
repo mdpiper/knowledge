@@ -55,6 +55,15 @@ Show the value of an environment variable:
 Mark
 ```
 
+Append to an environment variable:
+```pwsh
+$env:PATH += ";C:\Users\Mark\bin"
+```
+
+Display all environment variables:
+```pwsh
+ls env:
+```
 
 ## Commands
 
