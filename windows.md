@@ -37,15 +37,19 @@ BMIF_VERSION=2.0
 ```
 
 Show the current path with `set`:
-```
-set PATH
+```cmd
+> set PATH
 ```
 
 Prepend the path with directory `C:\Miniconda`:
-```
-set PATH=C:\Miniconda;%PATH%
+```cmd
+> set PATH=C:\Miniconda;%PATH%
 ```
 
+Display all environment variables:
+```cmd
+> env
+```
 
 ## Pwsh
 
