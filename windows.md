@@ -51,6 +51,17 @@ Display all environment variables:
 > env
 ```
 
+Show the current working directory:
+```cmd
+> pwd
+/c/Users/Mark/projects/pymt_heatf
+```
+or
+```cmd
+> cd
+c:\Users\Mark\projects\pymt_heatf
+```
+
 ## Pwsh
 
 Show the value of an environment variable:
@@ -67,6 +78,16 @@ $env:PATH += ";C:\Users\Mark\bin"
 Display all environment variables:
 ```pwsh
 ls env:
+```
+
+Show the current working directory:
+```pwsh
+> pwd
+
+Path
+----
+C:\Users\Mark\projects\pymt_heatf
+
 ```
 
 ## Commands
