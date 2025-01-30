@@ -412,3 +412,23 @@ $ du -h -d1 | sort -h | tail
 ```
 
 So many pipes.
+
+## Keep a job alive after logout
+
+To keep a job alive after logging out of a machine
+(or to prevent getting timed out of a JupyterHub),
+use the `nohup` command.
+
+For example, running the [piperformance](https://github.com/mdpiper/piperformance) script:
+
+```bash
+nohup python piperformance.py
+```
+
+By default, output is appended to the file **nohup.out**.
+
+Override the default output file through redirection (also capturing stderr and backgrounding the job):
+
+```bash
+nohup python piperformance.py &> output.log &
+```
