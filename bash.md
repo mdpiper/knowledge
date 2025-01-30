@@ -432,3 +432,42 @@ Override the default output file through redirection (also capturing stderr and 
 ```bash
 nohup python piperformance.py &> output.log &
 ```
+
+## Get time and memory usage
+
+Use `/usr/bin/time` to learn how much time and memory a job consumed.
+
+For example, running the [piperformance](https://github.com/mdpiper/piperformance) script:
+```bash
+/usr/bin/time -v python piperformance.py
+```
+
+gives this output after the process completes:
+```
+Elapsed time: 433.398 s
+    Command being timed: "python piperformance.py"
+    User time (seconds): 433.36
+    System time (seconds): 0.06
+    Percent of CPU this job got: 99%
+    Elapsed (wall clock) time (h:mm:ss or m:ss): 7:13.44
+    Average shared text size (kbytes): 0
+    Average unshared data size (kbytes): 0
+    Average stack size (kbytes): 0
+    Average total size (kbytes): 0
+    Maximum resident set size (kbytes): 17672
+    Average resident set size (kbytes): 0
+    Major (requiring I/O) page faults: 0
+    Minor (reclaiming a frame) page faults: 2706
+    Voluntary context switches: 205
+    Involuntary context switches: 1040
+    Swaps: 0
+    File system inputs: 0
+    File system outputs: 1088
+    Socket messages sent: 0
+    Socket messages received: 0
+    Signals delivered: 0
+    Page size (bytes): 4096
+    Exit status: 0
+```
+
+For memory use, the `Maximum resident set size` statistic is the one to look at.
