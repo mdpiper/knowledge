@@ -2,10 +2,10 @@
 
 Containers are cool!
 
-I got a lot from the [Getting Started][getting-started] tutorial
+* I got a lot from the [Getting Started][getting-started] tutorial
 and the video from Dockercon 2020 that accompanies it.
+* I have a [repository of Docker examples](https://github.com/mdpiper/docker-examples).
 
-I also have a [repository of Docker examples](https://github.com/mdpiper/docker-examples).
 
 ## Docker login
 
@@ -154,21 +154,13 @@ The `.dockerfile` extension is used by convention.
 A container is an instance of an image.
 Launch a container from an image:
 ```
-docker run hello-docker:0.1 
-docker run --publish 8080:80 --name hello --detach hello-docker:0.1 
+docker run --name yo hello-docker:0.1
 ```
-Here, `--publish` opens a port on the local machine (and optionally maps it to a port inside the container, as is done here),
-`--name` names the running container, overriding the randomly generated name
-given to it by Docker,
-and `--detach` runs the container in the background.
+The optional `--name` flag names the running container, overriding the randomly generated name
+given to it by Docker.
 
 Images can have many running containers.
 What containers are running?
-```
-docker ps
-docker ps -a
-```
-There's also an alternate subsubcommand syntax:
 ```
 docker container ls
 docker container ls -a
@@ -180,9 +172,9 @@ Containers are referenced by the name they're
 assigned at launch,
 not the tag of the parent image.
 ```
-docker start hello
-docker stop hello
-docker rm hello
+docker start yo
+docker stop yo
+docker rm yo
 ```
 
 Remove all containers that aren't running:
@@ -205,6 +197,33 @@ where `-i` keeps stdin open
 and `-t` creates a prompt.
 The shell is minimal.
 I've omitted the shell, and it seems like bash is the default.
+
+
+### Expose a port
+
+Map a port on the host machine to a port in a running container:
+```
+docker run --publish 8080:80 --detach hello-docker:0.1
+```
+Here, `--publish` opens a port on the local machine (and optionally maps it to a port inside the container, as is done here),
+and `--detach` runs the container in the background.
+
+This is particularly useful for running a Jupyter server in a container and exposing JupyterLab on the host (see an example [here](https://github.com/uw-ess524/virtual-machines#jupyter)).
+
+### Map a directory from host to container
+
+To have files (data, code, notebooks) on the host be available inside a container:
+```
+docker run \
+    --interactive \
+    --tty \
+    --volume /home/daniel/files-to-sync:/home/firedrake/files-to-sync \
+    danshapero/uw-ess524:2024-04-25
+```
+
+*References:*
+
+* I learned this from https://github.com/uw-ess524/virtual-machines
 
 
 ## Docker Hub
