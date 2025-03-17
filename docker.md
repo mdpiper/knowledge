@@ -381,6 +381,10 @@ $ docker run hello-world
 
 There's more at https://docs.docker.com/docker-for-mac/.
 
+Notes:
+
+* Be sure to configure the Docker Desktop install as **System**, not as **User**. To find this setting, open *Settings* and scroll all the way down the left nav panel to find *Advanced*. Without a **System** install, we don't have access to the CLI.
+
 
 <!-- Links -->
 
