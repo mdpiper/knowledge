@@ -54,3 +54,25 @@ for values that can be set.
 Placing two empty spaces at the end of a line  
 will force a line break (not a paragraph).
 
+## Alerts
+
+Alerts are a markdown extension.
+They're displayed in GitHub, for example,
+with colors and icons.
+Here's what's available:
+> [!NOTE]  
+> Highlights information that users should take into account, even when skimming.
+
+> [!TIP]
+> Optional information to help a user be more successful.
+
+> [!IMPORTANT]  
+> Crucial information necessary for users to succeed.
+
+> [!WARNING]  
+> Critical content demanding immediate user attention due to potential risks.
+
+> [!CAUTION]
+> Negative potential consequences of an action.
+
+Note that these don't render in VS Code.
