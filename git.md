@@ -417,6 +417,49 @@ $ GIT_COMMITTER_DATE="2020-03-10 16:06" git tag v0.1 -m "Initial version with ou
 
 * https://git-scm.com/docs/git-tag#_on_backdating_tags
 
+## Get the timestamp for all tags
+
+I've needed to get the date for a tag,
+for example,
+when building a changelog for an old repository
+or when updating the [CSDMS Software Dashboard](https://csdms.colorado.edu/wiki/SoftwareReleases).
+
+Here are examples from *bmi-topography*.
+
+All tags:
+```
+$ git log --tags --simplify-by-decoration --pretty="format:%ci %d"
+2025-02-09 10:57:25 -0700  (tag: v0.8.6)
+2024-08-18 17:38:22 -0600  (tag: v0.8.5)
+2024-03-28 10:53:39 -0600  (tag: v0.8.4)
+2023-12-18 10:51:52 -0700  (tag: v0.8.3)
+2023-02-06 21:39:01 -0700  (tag: v0.8.2)
+2023-01-27 14:28:55 -0700  (tag: v0.8.1)
+2022-07-05 15:10:26 -0600  (tag: v0.8)
+2022-06-03 12:08:19 -0600  (tag: v0.7.1)
+2022-03-24 14:07:43 -0600  (tag: v0.7)
+2022-02-17 14:56:12 -0700  (tag: v0.6)
+2022-02-15 12:13:07 -0700  (tag: v0.5.1)
+2022-01-25 12:37:26 -0700  (tag: v0.5)
+2021-09-03 14:07:11 -0600  (tag: v0.4)
+2021-04-23 11:32:26 -0600  (tag: v0.3.2)
+2021-03-04 14:24:16 -0700  (tag: v0.3.1)
+2021-02-25 17:17:04 -0700  (tag: v0.3)
+2021-02-24 11:31:33 -0700  (tag: v0.2)
+2021-02-22 13:02:41 -0700  (tag: v0.1.1)
+2021-02-16 11:42:41 -0700
+```
+
+A single tag:
+```
+$ git log -1 --format=%ai v0.8.6     
+2025-02-09 10:57:25 -0700
+```
+
+**Reference:**
+
+* https://stackoverflow.com/questions/13208734/get-the-time-and-date-of-git-tags
+
 
 ## Keep a feature branch in sync with the master branch
 
