@@ -99,6 +99,10 @@ For everything, from the working directory, call:
 
     $ git checkout -- .
 
+Another way:
+
+    git restore FILE
+    git restore .
 
 ## Delete the last unpushed commit
 
