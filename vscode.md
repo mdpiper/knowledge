@@ -15,9 +15,11 @@ respectively, by directly editing **keybindings.json**.
 
 * `Cmd-Shift-.` shows a definition (class, function) list, which can be arrowed through.
 
+* `Tab` on a highlighted code block shifts the indentation one level right; `Shift-Tab` moves it one level left.
+
 * Through the ReWrap extension, I can do the nice `M-q` word wrap from Emacs.
 
-## Emacs keybindings
+### Emacs keybindings
 
 I'm using the [Emacs Friendly Keymap](https://marketplace.visualstudio.com/items?itemName=lfs.vscode-emacs-friendly) extension,
 which is currently (Dec 2022) maintained.
