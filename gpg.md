@@ -7,17 +7,23 @@ My old
 from RSI is still available at the
 [MIT key server](http://pgp.mit.edu:11371/).
 
-## Export a public key to a file
+## Export a key pair + owner trust to files
 
 For my key at CSDMS:
+```bash
+gpg --export --armor "Mark Piper (CSDMS)" > mp-csdms-public.key
+gpg --export-secret-keys --armor "Mark Piper (CSDMS)" > mp-csdms-secret.key
+gpg --export-ownertrust > mp-ownertrust.txt
+```
 
-	$ gpg --export -a "Mark Piper (CSDMS)" > mp-csdms-public.key
+## Import a key pair + owner trust from files
 
-## Import a public key from a file
-
-I used this to import my public key into my keyring on ***river***.
-
-	$ gpg --import mp-csdms-public.key
+For my CSDMS key:
+```bash
+gpg --import mp-csdms-secret.key
+gpg --import mp-csdms-public.key
+gpg --import-ownertrust mp-ownertrust.txt
+```
 
 ## List keys
 
@@ -41,7 +47,7 @@ End with an empty line.
 
 ## Decrypt a file
 
-Decrypt a file with"
+Decrypt a file with:
 ```
 gpg --decrypt mpiper-ds82.pdf.gpg > mpiper-ds82.pdf
 ```
