@@ -1,4 +1,4 @@
-# GPG
+# GnuPG
 
 A handy [cheatsheet](http://irtfweb.ifa.hawaii.edu/~lockhart/gpg/gpg-cs.html).
 
