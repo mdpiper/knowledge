@@ -578,3 +578,24 @@ all files in the directory will be listed.
 Here's the canonical test **index.html**:
 
     <html><body><h1>It works!</h1></body></html>
+
+
+The walrus operator
+------------------------------------------------------------------------------
+
+The walrus operator `:=` was introduced in Python 3.8 (see [PEP 572](https://peps.python.org/pep-0572/)).
+It's used for assignment within an expression, like conditions and loops.
+For example:
+```python
+# Handle a matched regex
+if (match := pattern.search(data)) is not None:
+    # Do something with match
+
+# A loop that can't be trivially rewritten using 2-arg iter()
+while chunk := file.read(8192):
+   process(chunk)
+```
+
+*Reference:*
+
+* https://stackoverflow.com/a/26000366
