@@ -24,6 +24,16 @@ to get more detailed version information on the Docker client and server.
 Use the `--help` flag on the `docker` command,
 as well as its subcommands and subsubcommands.
 
+Find how much disk Docker is using:
+```bash
+docker system df
+```
+
+Delete just about everything and recover space:
+```bash
+docker system prune
+```
+
 ## Dockerfile syntax
 
 A Dockerfile is the recipe that describes how to 
