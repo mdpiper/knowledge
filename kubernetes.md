@@ -19,12 +19,13 @@ I have Docker Desktop installed, so I started it.
 Start a cluster with two nodes,
 using two CPUs and 2 Gi of memory:
 ```bash
-minikube start --kubernetes-version stable --nodes 2 --cpus 2 --memory 2000 --cni calico
+minikube start --kubernetes-version stable --nodes 2 --cpus 2 --memory 2g --cni calico --namespace z2jh
 ```
+I also gave it a namespace that I can refer to later.
 
 Many messages follow, ending with:
 ```
-🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+🏄  Done! kubectl is now configured to use "minikube" cluster and "z2jh" namespace by default
 ```
 
 Check that the cluster is initialized:
@@ -39,6 +40,16 @@ minikube-m02   Ready    <none>          35m   v1.33.1
 ```
 There's also `minikube status` which returns similar information.
 
+Note that `kubectl get ns` still reports the namespace as "default", not "z2jh":
+```
+NAME              STATUS   AGE
+default           Active   107m
+kube-node-lease   Active   107m
+kube-public       Active   107m
+kube-system       Active   107m
+```
+I'm not sure why.
+
 Stop the cluster:
 ```bash
 minikube stop
@@ -52,4 +63,3 @@ minikube delete --all
 *References*:
 
 * minikube start: https://minikube.sigs.k8s.io/docs/start
-
