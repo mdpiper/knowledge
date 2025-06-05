@@ -5,23 +5,25 @@
 [minikube](https://minikube.sigs.k8s.io/docs/) is local Kubernetes
 intended for learning, testing, and development.
 
-I installed *minikube* on ***solaria*** through Homebrew:
+I installed *minikube* on ***solaria*** and ***terminus*** through Homebrew:
 ```bash
 brew install minikube
 ``` 
-This also installs the *kubernetes-cli* package,
-so I get `kubectl`.
+This also installs the *kubernetes-cli* package as a dependency.
+
+I've also had [success](https://github.com/csdms/jupyterhub-management/blob/main/z2jh/minikube.yml) installing these packages through *conda*.
 
 *minikube* needs a [driver](https://minikube.sigs.k8s.io/docs/drivers/) to work.
 [Docker](https://minikube.sigs.k8s.io/docs/drivers/docker/#Standard%20Docker) is one of the driver choices.
 I have Docker Desktop installed, so I started it.
+Note that `kubectl` is installed through Docker Desktop (though possibly also through *kubernetes-cli*?).
 
 Start a cluster with two nodes,
 using two CPUs and 2 Gi of memory:
 ```bash
 minikube start --kubernetes-version stable --nodes 2 --cpus 2 --memory 2g --cni calico --namespace z2jh
 ```
-I also gave it a namespace that I can refer to later.
+I gave the cluster a namespace I can refer to later.
 
 Many messages follow, ending with:
 ```
