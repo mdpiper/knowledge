@@ -1,11 +1,80 @@
 # JupyterHub
 
 My experience in installing, setting up, and running
-[JupyterHub](https://github.com/jupyterhub/jupyterhub).
+[JupyterHub](https://jupyterhub.readthedocs.io/en/stable/).
 
 The configuration files for Jupyter at CSDMS can be found
-[here](https://github.com/csdms/jupyterhub).
+[here](https://github.com/csdms/jupyterhub-management).
 
+## Zero to JupyterHub (z2jh)
+
+[Zero to JupyterHub with Kubernetes](https://z2jh.jupyter.org/en/stable/index.html) is a way to set up a JupyterHub on a cloud or local environment and leverage its scalable nature to support a large group of users.
+
+See also my notes on [Kubernetes and Helm](./kubernetes.md).
+
+Add the repository of JupyterHub Helm charts:
+```bash
+helm repo add jupyterhub https://hub.jupyter.org/helm-chart/
+helm repo update
+```
+
+Elsewhere, I've set up a Helm `config.yaml`.
+Install JupyterHub
+from a Helm chart
+into a k8s cluster
+with my configuration values
+using:
+```bash
+helm upgrade --cleanup-on-fail --install experiment jupyterhub/jupyterhub --namespace z2jh --version "4.1.0" --values config.yaml
+```
+where
+
+* "default" is the namespace of my k8s cluster,
+* "experiment" is my choice for the [Helm release name](https://helm.sh/docs/glossary/#release), and
+* "4.1.0" is the [version of JupyterHub Helm chart](https://hub.jupyter.org/helm-chart/) to use.
+
+Verify the pods are running:
+```bash
+kubectl get pod --namespace=default
+```
+
+If a pod keeps restarting, diagnose this issue with:
+```bash
+kubectl logs --namespace=default --previous <name of pod>
+```
+
+There was a problem.
+The Hub pod kept crashing.
+It is apparently a permissions error.
+A file can't be written.
+Description and possible fix here: https://discourse.jupyter.org/t/sql-operationalerror-with-jh-default-config/12207/1
+
+Modified my `config.yaml`.
+Ran a `helm upgrade`:
+```bash
+helm upgrade --cleanup-on-fail experiment jupyterhub/jupyterhub --namespace z2jh0 --version "4.1.0" --values config.yaml
+```
+
+Now the Hub starts.
+
+Check for the public IP address:
+```
+kubectl --namespace=z2jh0 describe service proxy-public
+```
+I don't have this locally on ***solaria***.
+
+Forward the port:
+```
+kubectl --namespace=z2jh0 port-forward service/proxy-public 8080:http
+```
+
+The Hub is running at
+http://localhost:8080!
+
+*References:*
+
+* [Zero to JupyterHub with Kubernetes](https://z2jh.jupyter.org/en/stable/index.html)
+* [Setup JupyterHub](https://z2jh.jupyter.org/en/stable/jupyterhub/index.html#setup-jupyterhub)
 
 ## Installing JupyterHub on ***siwenna***
 
