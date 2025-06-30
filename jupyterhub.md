@@ -82,6 +82,32 @@ Now the Hub pod starts.
 
 * https://discourse.jupyter.org/t/sql-operationalerror-with-jh-default-config/12207/1
 
+## Jupyter Docker Stacks
+
+These are a set of Docker images containing Project Jupyter applications and other software.
+I'm particularly interested in the [scipy-notebook](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#jupyter-scipy-notebook) image as a base for building a JupyterHub that includes CSDMS software.
+
+Download an image:
+```sh
+docker pull quay.io/jupyter/scipy-notebook:python-3.12.11
+```
+
+Run a JupyterHub through a container:
+```sh
+docker run -p 8888:8888 quay.io/jupyter/scipy-notebook:python-3.12.11
+```
+
+Visiting `http://<hostname>:8888/?token=<token>` in a browser loads JupyterLab, where:
+
+* `hostname` is the name of the computer running Docker
+* `token` is the secret token printed in the console
+
+*References:*
+
+* Documentation: https://jupyter-docker-stacks.readthedocs.io
+* Repository: https://github.com/jupyter/docker-stacks
+* Images: https://quay.io/organization/jupyter
+
 ## Installing JupyterHub on ***siwenna***
 
 JupyterHub requires `python>=3.4`.
