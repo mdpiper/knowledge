@@ -140,6 +140,9 @@ In the [mdpiper/hello-docker](https://github.com/mdpiper/hello-docker) repositor
 I made a demonstration workflow to build and push an image when a repository is tagged;
 see the workflow file [release.yml](https://github.com/mdpiper/hello-docker/blob/main/.github/workflows/release.yml).
 
+Note that the Docker Login action can be used to log in to other image registries,
+such as GitHub Container Registry and Quay.io.
+
 ### Build logs
 
 I've used a shell method for capturing a build log:
