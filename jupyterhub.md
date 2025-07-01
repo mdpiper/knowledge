@@ -67,6 +67,7 @@ http://localhost:8080!
 
 * [Zero to JupyterHub with Kubernetes](https://z2jh.jupyter.org/en/stable/index.html)
 * [Setup JupyterHub](https://z2jh.jupyter.org/en/stable/jupyterhub/index.html#setup-jupyterhub)
+* The [GitHub repository](https://github.com/jupyterhub/zero-to-jupyterhub-k8s) with sources for the JupyterHub Helm chart
 
 ### Local persistent user storage issue
 
