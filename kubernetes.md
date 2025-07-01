@@ -1,5 +1,7 @@
 # Kubernetes
 
+See also my notes on [helm](./helm.md) and [jupyterhub](./jupyterhub.md).
+
 ## Explore with *minikube*
 
 [minikube](https://minikube.sigs.k8s.io/docs/) is local Kubernetes

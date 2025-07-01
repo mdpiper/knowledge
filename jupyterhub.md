@@ -6,6 +6,8 @@ My experience in installing, setting up, and running
 The configuration files for Jupyter at CSDMS can be found
 [here](https://github.com/csdms/jupyterhub-management).
 
+See also my notes on [kubernetes](./kubernetes.md) and [helm](./helm.md).
+
 ## Zero to JupyterHub (z2jh)
 
 [Zero to JupyterHub with Kubernetes](https://z2jh.jupyter.org/en/stable/index.html) is a way to set up a JupyterHub on a cloud or local environment and leverage its scalable nature to support a large group of users.
