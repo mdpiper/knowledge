@@ -102,6 +102,9 @@ Visiting `http://<hostname>:8888/?token=<token>` in a browser loads JupyterLab, 
 * `hostname` is the name of the computer running Docker
 * `token` is the secret token printed in the console
 
+Note that Project Jupyter moved from Docker Hub to [quay.io](https://quay.io) for hosting images.
+I made a quay.io account, but I haven't used it yet; still using Docker Hub (for now, while it's free for my low-volume open-source project).
+
 *References:*
 
 * Documentation: https://jupyter-docker-stacks.readthedocs.io
