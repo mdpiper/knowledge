@@ -105,7 +105,8 @@ Use the mouse to move it around.
 
 ## System resource use
 
-Use the *Activity Monitor* app instead of `top`.
+To see CPU, memory, disk, network, and energy use,
+use the *Activity Monitor* app instead of `top` or `htop`.
 
 ## Rename terminal tab title
 
