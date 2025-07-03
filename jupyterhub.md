@@ -1,6 +1,6 @@
 # JupyterHub
 
-My experience in installing, setting up, and running
+My experience with installing, setting up, and running
 [JupyterHub](https://jupyterhub.readthedocs.io/en/stable/).
 
 The configuration files for Jupyter at CSDMS can be found
@@ -12,7 +12,7 @@ See also my notes on [kubernetes](./kubernetes.md) and [helm](./helm.md).
 
 [Zero to JupyterHub with Kubernetes](https://z2jh.jupyter.org/en/stable/index.html) is a way to set up a JupyterHub on a cloud or local environment and leverage its scalable nature to support a large group of users.
 
-See also my notes on [Kubernetes and Helm](./kubernetes.md).
+A running k8s cluster is required for the following commands.
 
 Add the repository of JupyterHub Helm charts:
 ```bash
