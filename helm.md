@@ -58,4 +58,4 @@ helm delete test
 *References:*
 
 * Helm Quickstart: https://helm.sh/docs/intro/quickstart/
-* Grafana Helm chart: https://artifacthub.io/packages/helm/grafana/grafana
+* Grafana Helm chart: https://artifacthub.io/packages/helm/grafana/grafana and the GitHub repo where the charts are set up: https://github.com/grafana/helm-charts
