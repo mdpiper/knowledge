@@ -108,6 +108,10 @@ Use the mouse to move it around.
 To see CPU, memory, disk, network, and energy use,
 use the *Activity Monitor* app instead of `top` or `htop`.
 
+## Re/format an external drive
+
+Use *Disk Utility*.
+
 ## Rename terminal tab title
 
 I should do this programmatically in bash or zsh,
