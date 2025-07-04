@@ -1,6 +1,8 @@
 # VS Code
 
-In December 2020, I took the plunge and switched from Emacs in the terminal to [VS Code](https://code.visualstudio.com/).
+In December 2020, I took the plunge and switched from Emacs in the terminal to [Visual Studio Code](https://code.visualstudio.com/).
+
+I have a separate repository, [mdpiper/vscode](https://github.com/mdpiper/vscode), with files for working with VS Code.
 
 ## Keybindings
 
@@ -50,3 +52,15 @@ I changed it to:
 }
 ```
 which works, and doesn't have any conflicts.
+
+## Markdown preview styles
+
+The default Markdown preview in VS Code is bland.
+To make it look nicer, I use the
+[Markdown Preview GitHub Styles](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles) extension.
+
+You can also [define your own styles](https://code.visualstudio.com/Docs/languages/markdown#_using-your-own-css).
+I've deployed my [mdpiper/vscode](https://github.com/mdpiper/vscode) repository through Pages,
+which exposes my [custom CSS](https://mdpiper.github.io/vscode/css/markdown-preview.css).
+I link to this style sheet (by its URL) in my VS Code settings,
+where it's layered on top of the styles set by the Markdown Preview extension.
