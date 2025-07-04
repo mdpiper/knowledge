@@ -6,20 +6,21 @@ I have a separate repository, [mdpiper/vscode](https://github.com/mdpiper/vscode
 
 ## Keybindings
 
-Notes:
+Notes on some keybindings I've made,
+and others that I need but I keep forgetting.
 
-* I mapped `C-c u` and `C-c l` to change to upper and lower case,
-respectively, by directly editing **keybindings.json**.
+| Keybinding | Description |
+| --- | --- |
+| `C-c u` | Change to uppercase |
+| `C-c l` | Change to lowercase |
+| `C-Tab` | Presents list of open tabs |
+| `M-Cmd-Larrow`, `M-Cmd-Rarrow` | Cycle through open tabs |
+| `Cmd-P` | Presents list of recent tab history |
+| `Cmd-Shift-.` | Displays a definition (class, function) list, which can be arrowed through |
+| `Tab` | Shifts highlighted code block one indentation level to the right |
+| `Shift-Tab` | Shifts block one level left |
+| `M-q` | Word wrap, Emacs style (through the ReWrap extension) |
 
-* `C-Tab` presents list of open tabs.
-`M-Cmd-Larrow` and `M-Cmd-Rarrow` cycle through open tabs.
-`Cmd-P` presents list of recent tab history.
-
-* `Cmd-Shift-.` shows a definition (class, function) list, which can be arrowed through.
-
-* `Tab` on a highlighted code block shifts the indentation one level right; `Shift-Tab` moves it one level left.
-
-* Through the ReWrap extension, I can do the nice `M-q` word wrap from Emacs.
 
 ### Emacs keybindings
 
