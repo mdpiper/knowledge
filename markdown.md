@@ -54,6 +54,28 @@ for values that can be set.
 Placing two empty spaces at the end of a line  
 will force a line break (not a paragraph).
 
+## Tables
+
+An example of a table with GitHub-flavored Markdown.
+
+```
+| Command | Description |
+| --- | --- |
+| `git status` | List all *new or modified* files |
+| `git diff` | Show file differences that **haven't been** staged |
+```
+
+This is rendered as:
+
+| Command | Description |
+| --- | --- |
+| `git status` | List all *new or modified* files |
+| `git diff` | Show file differences that **haven't been** staged |
+
+*Reference:*
+
+* [Organizing information with tables](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/organizing-information-with-tables) [docs.github.com]
+
 ## Alerts
 
 Alerts are a markdown extension.
