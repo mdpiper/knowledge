@@ -20,6 +20,8 @@ and others that I need but I keep forgetting.
 | `Tab` | Shifts highlighted code block one indentation level to the right |
 | `Shift-Tab` | Shifts block one level left |
 | `M-q` | Word wrap, Emacs style (through the ReWrap extension) |
+| `Shift-Cmd-v` | Show Markdown preview |
+| `Cmd-k v` | Open Markdown preview to the side |
 
 
 ### Emacs keybindings
