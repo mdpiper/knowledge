@@ -20,7 +20,7 @@ helm repo add jupyterhub https://hub.jupyter.org/helm-chart/
 helm repo update
 ```
 
-Elsewhere, I've set up a Helm `config.yaml` to customize my JupyterHub.
+Elsewhere, I've set up a [Helm chart configuration file](#customizing-a-z2jh-deployment) to customize my JupyterHub.
 Install JupyterHub
 from a Helm chart
 into a k8s cluster
@@ -68,6 +68,32 @@ http://localhost:8080!
 * [Zero to JupyterHub with Kubernetes](https://z2jh.jupyter.org/en/stable/index.html)
 * [Setup JupyterHub](https://z2jh.jupyter.org/en/stable/jupyterhub/index.html#setup-jupyterhub)
 * The [GitHub repository](https://github.com/jupyterhub/zero-to-jupyterhub-k8s) with sources for the JupyterHub Helm chart
+
+### Customizing a z2jh deployment
+
+Use a configuration file (yaml) to customize the options presented in a Helm chart.
+
+Here's the `config.yaml` I used to load the [CSDMS JupyterHub image](https://hub.docker.com/repository/docker/csdms/jupyterhub/general) instead of the default JupyterHub image.
+```yaml
+# JupyterHub Helm chart configuration
+
+hub:
+  db:
+    type: sqlite-memory
+
+singleuser:
+  storage:
+    type: none
+  image:
+    name: csdms/jupyterhub
+    tag: 0.1.0
+  cmd: null
+```
+
+*References:*
+
+* [Customizing your Deployment](https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/extending-jupyterhub.html) [z2jh.jupyter.org]
+* [Configuration Reference](https://z2jh.jupyter.org/en/stable/resources/reference.html) [z2jh.jupyter.org]
 
 ### Local persistent user storage issue
 
