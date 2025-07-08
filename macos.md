@@ -257,3 +257,14 @@ but it requires additional packages.
 
 Install through Homebrew;
 see https://formulae.brew.sh/cask/mactex.
+
+## High CPU use by *contactsd*
+
+I noticed that the fan is often running high,
+and, using *Activity Monitor*,
+I tracked it to high CPU use by *contactsd*.
+
+I solved the problem by changing the settings
+for each of my contacts-providing internet accounts
+from automatically checking for contacts updates
+to checking hourly.
