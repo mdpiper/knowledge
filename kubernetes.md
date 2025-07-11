@@ -91,6 +91,12 @@ Ran `gcloud init` for authentication and configuration.
 Configuration saved in `~/.boto`.
 Do this on all local machines where I'll be using `gcloud`.
 
+Kubernetes clients like `kubectl` require an authentication plugin, *gke-gcloud-auth-plugin*.
+Install it with:
+```bash
+gcloud components install gke-gcloud-auth-plugin
+```
+
 Create a k8s cluster with two nodes.
 ```bash
 gcloud container clusters create \
@@ -106,6 +112,30 @@ where
 * preemptible nodes are [heavily discounted](https://cloud.google.com/compute/docs/instances/preemptible)
 * *milwaukee* is the cluster name
 
+This command took about 5 minutes to run.
+It successfully created a cluster,
+returning this kubeconfig entry:
+```console
+NAME       LOCATION       MASTER_VERSION      MASTER_IP      MACHINE_TYPE   NODE_VERSION        NUM_NODES  STATUS
+milwaukee  us-central1-c  1.33.2-gke.1043000  34.46.137.217  n1-standard-2  1.33.2-gke.1043000  2          RUNNING
+```
+
+List all running cluster:
+```bash
+gcloud container clusters list
+```
+I can also view my [Workloads](https://console.cloud.google.com/kubernetes/workload/overview) on the web.
+
+View details about the running cluster:
+```bash
+gcloud container clusters describe milwaukee
+```
+
+Delete the cluster *milwaukee* with:
+```bash
+gcloud container clusters delete milwaukee
+```
+
 *References*:
 
 * GKE instructions from z2jh: https://z2jh.jupyter.org/en/stable/kubernetes/google/step-zero-gcp.html
@@ -114,4 +144,6 @@ where
 * [Available regions and zones](https://cloud.google.com/compute/docs/regions-zones/#available)
 * [Machine families resource and comparison guide](https://cloud.google.com/compute/docs/machine-resource)
   * [General-purpose machine family for Compute Engine](https://cloud.google.com/compute/docs/general-purpose-machines)
+* [Managing clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/managing-clusters)
+* [Deleting a cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/deleting-a-cluster)
 
