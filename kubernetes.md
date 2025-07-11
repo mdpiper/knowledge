@@ -67,3 +67,51 @@ minikube delete --all
 *References*:
 
 * minikube start: https://minikube.sigs.k8s.io/docs/start
+
+## Google Kubernetes Engine (GKE)
+
+Login through CloudBank.
+Google set up a new mark.piper@cloudbank.org profile for me.
+Use it to login through https://console.cloud.google.com/.
+
+Enabled Kubernetes Engine API.
+
+Installed Google Cloud CLI (includes `gcloud`) locally through conda
+(see [gke.yml](https://github.com/csdms/jupyterhub-management/blob/main/z2jh/gke.yml)).
+Also available through Homebrew.
+
+Ran `gcloud init` for authentication and configuration.
+
+* Project: nsf-2148762-333330
+* Zone: us-central1-c
+* Region: us-central1
+* Council Bluffs, Iowa
+* Low CO2
+
+Configuration saved in `~/.boto`.
+Do this on all local machines where I'll be using `gcloud`.
+
+Create a k8s cluster with two nodes.
+```bash
+gcloud container clusters create \
+  --machine-type n1-standard-2 \
+  --num-nodes 2 \
+  --zone us-central1-c \
+  --preemptible \
+  --cluster-version latest \
+  milwaukee
+```
+where
+* *n1-standard-2* is a basic machine type with 2 vCPUs and 7.5 GB of memory (more on the [N1 standard](https://cloud.google.com/compute/docs/general-purpose-machines#n1_machine_types) machine type)
+* preemptible nodes are [heavily discounted](https://cloud.google.com/compute/docs/instances/preemptible)
+* *milwaukee* is the cluster name
+
+*References*:
+
+* GKE instructions from z2jh: https://z2jh.jupyter.org/en/stable/kubernetes/google/step-zero-gcp.html
+* [Kubernetes Engine API](https://console.cloud.google.com/apis/api/container.googleapis.com/overview)
+* [Google Cloud CLI](https://cloud.google.com/sdk/docs/install)
+* [Available regions and zones](https://cloud.google.com/compute/docs/regions-zones/#available)
+* [Machine families resource and comparison guide](https://cloud.google.com/compute/docs/machine-resource)
+  * [General-purpose machine family for Compute Engine](https://cloud.google.com/compute/docs/general-purpose-machines)
+
