@@ -79,6 +79,8 @@ Enabled Kubernetes Engine API.
 Installed Google Cloud CLI (includes `gcloud`) locally through conda
 (see [gke.yml](https://github.com/csdms/jupyterhub-management/blob/main/z2jh/gke.yml)).
 Also available through Homebrew.
+*Update:* Things worked better if I installed [from source](https://cloud.google.com/sdk/docs/install).
+Try conda again, but this may be the way forward.
 
 Ran `gcloud init` for authentication and configuration.
 
@@ -90,12 +92,35 @@ Ran `gcloud init` for authentication and configuration.
 
 Configuration saved in `~/.boto`.
 Do this on all local machines where I'll be using `gcloud`.
+The config is persistent, so I don't have to run `gcloud init` again.
 
 Kubernetes clients like `kubectl` require an authentication plugin, *gke-gcloud-auth-plugin*.
 Install it with:
 ```bash
 gcloud components install gke-gcloud-auth-plugin
 ```
+Check that it has been installed correctly:
+```bash
+gke-gcloud-auth-plugin --version
+```
+
+Also install `kubectl` through `gcloud` to match versions:
+```bash
+gcloud components install kubectl
+```
+I'm not entirely sure I'm using `kubectl` through `gcloud`
+or if it's from what I have already in `/usr/local/` through Docker.
+Some info:
+```bash
+kubectl version
+```
+gives:
+```console
+Client Version: v1.32.2
+Kustomize Version: v5.5.0
+Server Version: v1.33.2-gke.1043000
+```
+Still need to verify this.
 
 Create a k8s cluster with two nodes.
 ```bash
@@ -124,6 +149,7 @@ List all running cluster:
 ```bash
 gcloud container clusters list
 ```
+This prints the above kubeconfig entry.
 I can also view my [Workloads](https://console.cloud.google.com/kubernetes/workload/overview) on the web.
 
 View details about the running cluster:
@@ -131,7 +157,30 @@ View details about the running cluster:
 gcloud container clusters describe milwaukee
 ```
 
-Delete the cluster *milwaukee* with:
+To enable `kubectl` with the cluster, get credentials from the server:
+```bash
+gcloud container clusters get-credentials milwaukee --location=us-central1-c
+```
+Check that the credentials work:
+```bash
+kubectl get namespaces
+```
+which gives:
+```console
+NAME                          STATUS   AGE
+default                       Active   4m26s
+gke-managed-cim               Active   2m27s
+gke-managed-system            Active   2m12s
+gke-managed-volumepopulator   Active   2m8s
+gmp-public                    Active   110s
+gmp-system                    Active   110s
+kube-node-lease               Active   4m26s
+kube-public                   Active   4m27s
+kube-system                   Active   4m27s
+```
+This verifies the credentials work with `kubectl`.
+
+Delete the cluster *milwaukee*:
 ```bash
 gcloud container clusters delete milwaukee
 ```
