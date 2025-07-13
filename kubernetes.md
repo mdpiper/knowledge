@@ -76,11 +76,19 @@ Use it to login through https://console.cloud.google.com/.
 
 Enabled Kubernetes Engine API.
 
-Installed Google Cloud CLI (includes `gcloud`) locally through conda
+Initially, I installed Google Cloud CLI (which includes `gcloud`) locally through conda
 (see [gke.yml](https://github.com/csdms/jupyterhub-management/blob/main/z2jh/gke.yml)).
-Also available through Homebrew.
-*Update:* Things worked better if I installed [from source](https://cloud.google.com/sdk/docs/install).
-Try conda again, but this may be the way forward.
+(Note that it's also available through Homebrew.)
+However, this didn't quite work: there was a problem with authentication.
+It seems to be better to install [from source](https://cloud.google.com/sdk/docs/install).
+I placed the distribution in my `~/Applications` directory.
+I activate it in a zsh shell (setting paths and command completion)
+with a [script](https://github.com/csdms/jupyterhub-management/blob/main/z2jh/activate_gcloud)
+I adapted from Google:
+```bash
+source activate_gcloud
+```
+The script has to be in the path (e.g., `~/bin`) for this syntax to work.
 
 Ran `gcloud init` for authentication and configuration.
 
@@ -108,19 +116,21 @@ Also install `kubectl` through `gcloud` to match versions:
 ```bash
 gcloud components install kubectl
 ```
-I'm not entirely sure I'm using `kubectl` through `gcloud`
-or if it's from what I have already in `/usr/local/` through Docker.
-Some info:
+
+Check the install:
 ```bash
+which kubectl
 kubectl version
 ```
-gives:
+This gives:
 ```console
-Client Version: v1.32.2
+/Users/mpiper/Applications/google-cloud-sdk/bin/kubectl
+Client Version: v1.32.4-dispatcher
 Kustomize Version: v5.5.0
 Server Version: v1.33.2-gke.1043000
 ```
-Still need to verify this.
+(Note that I ran this while I had a cluster running;
+"Server Version" wouldn't have a response otherwise.)
 
 Create a k8s cluster with two nodes.
 ```bash
@@ -178,7 +188,6 @@ kube-node-lease               Active   4m26s
 kube-public                   Active   4m27s
 kube-system                   Active   4m27s
 ```
-This verifies the credentials work with `kubectl`.
 
 Delete the cluster *milwaukee*:
 ```bash
