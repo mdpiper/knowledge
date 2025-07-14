@@ -12,7 +12,13 @@ See also my notes on [kubernetes](./kubernetes.md) and [helm](./helm.md).
 
 [Zero to JupyterHub with Kubernetes](https://z2jh.jupyter.org/en/stable/index.html) is a way to set up a JupyterHub on a cloud or local environment and leverage its scalable nature to support a large group of users.
 
-A running k8s cluster is required for the following commands.
+A running k8s cluster (call it "csdms") is required for the following commands.
+If more than one cluster is present,
+set the activate cluster with
+```bash
+kubectl config use-context <long prefix>_csdms  # only needed to switch clusters
+```
+where the long context name is returned from `kubectl config get-contexts`.
 
 Add the repository of JupyterHub Helm charts:
 ```bash
@@ -20,31 +26,32 @@ helm repo add jupyterhub https://hub.jupyter.org/helm-chart/
 helm repo update
 ```
 
-Elsewhere, I've set up a [Helm chart configuration file](#customizing-a-z2jh-deployment) to customize my JupyterHub.
+Elsewhere, I've set up a [Helm chart configuration file](#customizing-a-z2jh-deployment) to customize my JupyterHub
+(see [config.yaml](https://github.com/csdms/jupyterhub-management/blob/main/z2jh/config.yaml)).
 Install JupyterHub
 from a Helm chart
-into a k8s cluster
+into the active k8s cluster
 with my configuration values
 using:
 ```bash
-helm upgrade --cleanup-on-fail --install experiment jupyterhub/jupyterhub --namespace csdms --create-namespace --version "4.2.0" --values config.yaml
+helm upgrade --cleanup-on-fail --install experiment jupyterhub/jupyterhub --namespace default --create-namespace --version "4.2.0" --values config.yaml
 ```
 where
 
-* `csdms` is the namespace of my k8s cluster,
 * `experiment` is my choice for the [Helm release name](https://helm.sh/docs/glossary/#release), and
+* `jupyterhub/jupyterhub` is the chart name,
 * `"4.2.0"` is the [version of JupyterHub Helm chart](https://hub.jupyter.org/helm-chart/) to use.
 
 This command takes a little while to run and the prompt is unresponsive.
 
 Once the install is complete, verify the pods are running:
 ```bash
-kubectl get pod --namespace=csdms
+kubectl get pod --namespace=default
 ```
 
 If a pod keeps restarting, diagnose the issue with:
 ```bash
-kubectl logs --namespace=csdms --previous <name of pod>
+kubectl logs --namespace=default --previous <name of pod>
 ```
 
 > [!NOTE]  
@@ -52,12 +59,12 @@ kubectl logs --namespace=csdms --previous <name of pod>
 
 Check for the public IP address:
 ```bash
-kubectl --namespace=csdms describe service proxy-public
+kubectl --namespace=default describe service proxy-public
 ```
 I don't have this locally on ***solaria***.
 Instead, forward the port:
 ```bash
-kubectl --namespace=csdms port-forward service/proxy-public 8080:http
+kubectl --namespace=default port-forward service/proxy-public 8080:http
 ```
 
 The Hub is running at
