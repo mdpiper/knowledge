@@ -219,3 +219,18 @@ gcloud container clusters delete milwaukee
   * [General-purpose machine family for Compute Engine](https://cloud.google.com/compute/docs/general-purpose-machines)
 * [Managing clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/managing-clusters)
 * [Deleting a cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/deleting-a-cluster)
+
+### Connect to remote cluster
+
+If the cluster *milwaukee* is not present locally,
+but it is running in the cloud,
+connect to it with:
+```bash
+gcloud container clusters get-credentials milwaukee --location=us-central1-c
+```
+
+Check with:
+```bash
+gcloud container clusters list
+kubectl config get-clusters
+```
