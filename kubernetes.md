@@ -116,6 +116,9 @@ Also install `kubectl` through `gcloud` to match versions:
 ```bash
 gcloud components install kubectl
 ```
+It's likely `kubectl` is already installed elsewhere on the path,
+such as through Docker.
+A `rehash` may be needed after install.
 
 Check the install:
 ```bash
@@ -155,12 +158,12 @@ NAME       LOCATION       MASTER_VERSION      MASTER_IP      MACHINE_TYPE   NODE
 milwaukee  us-central1-c  1.33.2-gke.1043000  34.46.137.217  n1-standard-2  1.33.2-gke.1043000  2          RUNNING
 ```
 
-List all running cluster:
+List all running clusters:
 ```bash
 gcloud container clusters list
 ```
 This prints the above kubeconfig entry.
-I can also view my [Workloads](https://console.cloud.google.com/kubernetes/workload/overview) on the web.
+I can also view my [Clusters](https://console.cloud.google.com/kubernetes/list/overview) on the web.
 
 View details about the running cluster:
 ```bash
@@ -189,6 +192,18 @@ kube-public                   Active   4m27s
 kube-system                   Active   4m27s
 ```
 
+When I install an application,
+such as a JupyterHub,
+into this cluster,
+I can view it with
+```bash
+kubectl get pod
+```
+I can also view my
+[Workloads](https://console.cloud.google.com/kubernetes/workload/overview) on the web.
+(Check the "proxy" workload to get the public IP address of the running Hub.)
+
+
 Delete the cluster *milwaukee*:
 ```bash
 gcloud container clusters delete milwaukee
@@ -204,4 +219,3 @@ gcloud container clusters delete milwaukee
   * [General-purpose machine family for Compute Engine](https://cloud.google.com/compute/docs/general-purpose-machines)
 * [Managing clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/managing-clusters)
 * [Deleting a cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/deleting-a-cluster)
-
