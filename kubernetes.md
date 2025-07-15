@@ -192,9 +192,7 @@ kube-public                   Active   4m27s
 kube-system                   Active   4m27s
 ```
 
-When I install an application,
-such as a JupyterHub,
-into this cluster,
+When I install an application (such as a JupyterHub) into this cluster,
 I can view it with
 ```bash
 kubectl get pod
@@ -202,12 +200,6 @@ kubectl get pod
 I can also view my
 [Workloads](https://console.cloud.google.com/kubernetes/workload/overview) on the web.
 (Check the "proxy" workload to get the public IP address of the running Hub.)
-
-
-Delete the cluster *milwaukee*:
-```bash
-gcloud container clusters delete milwaukee
-```
 
 *References*:
 
@@ -218,7 +210,6 @@ gcloud container clusters delete milwaukee
 * [Machine families resource and comparison guide](https://cloud.google.com/compute/docs/machine-resource)
   * [General-purpose machine family for Compute Engine](https://cloud.google.com/compute/docs/general-purpose-machines)
 * [Managing clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/managing-clusters)
-* [Deleting a cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/deleting-a-cluster)
 
 ### Connect to remote cluster
 
@@ -234,3 +225,56 @@ Check with:
 gcloud container clusters list
 kubectl config get-clusters
 ```
+
+### Delete a cluster
+
+Delete the cluster *milwaukee*:
+```bash
+gcloud container clusters delete milwaukee
+```
+
+*References*:
+
+* [Deleting a cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/deleting-a-cluster)
+
+## Managing multiple clusters
+
+Say I have two k8s clusters, *milwaukee* and *madison*,
+and I want to use `helm` to install an application onto one of them.
+`helm` doesn't have the facility to choose clusters;
+instead, we have to set the current context through `kubectl`,
+then `helm` will install into it.
+
+See what contexts are available through `kubectl`:
+```bash
+kubectl config get-contexts
+```
+This returns, for example:
+```console
+CURRENT   NAME              CLUSTER           AUTHINFO           NAMESPACE
+*         bblah-madison     bblah-madison     bblah-madison     
+          bblah-milwaukee   bblah-milwaukee   bblah-milwaukee
+```
+(The names are typically much longer and mangled depending on the cloud provider.)
+
+Show that *madison* is the current context:
+```bash
+kubectl config current-context  # madison
+```
+
+Switch the current context to *milwaukee*:
+```bash
+kubectl config use-context bblah-milwaukee
+```
+and check the result:
+```bash
+kubectl config current-context  # milwaukee
+```
+
+For more detail, try:
+```bash
+kubectl config view
+```
+This shows all the info in the kubeconfig file.
+
+`helm` can now be used to install an application into *milwaukee*.
