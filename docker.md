@@ -42,14 +42,14 @@ It's a text file that contains a set of instructions.
 
 | Instruction | Description |
 | ----------- | ----------- |
-| FROM | Base image to use. Must be first command in file. |
-| COPY | Copy files from local filesystem to image filesystem. |
-| CMD | Run a command, intended as the default for a container. There can be only one CMD instruction per file. Cf. ENTRYPOINT and RUN. |
-| ENV | Sets an environment variable. |
-| EXPOSE | Open a network port. |
-| RUN | Execute a command. |
-| WORKDIR | Sets the working directory in the image. |
-| # | Comment character |
+| `FROM` | Base image to use. Must be first command in file. |
+| `COPY` | Copy files from local filesystem to image filesystem. |
+| `CMD` | Run a command, intended as the default for a container. There can be only one `CMD` instruction per file. Cf. `ENTRYPOINT` and `RUN`. |
+| `ENV` | Sets an environment variable. |
+| `EXPOSE` | Open a network port. |
+| `RUN` | Execute a command. |
+| `WORKDIR` | Sets the working directory in the image. |
+| `#` | Comment character |
 
 Instructions are layered in order.
 Instructions aren't case sensitive,
@@ -126,6 +126,26 @@ docker buildx build --platform linux/amd64,linux/arm64 -t mdpiper/multiplatform:
 *References:*
 
   * https://docs.docker.com/build/building/multi-platform/
+
+### Multi-stage builds
+
+Use multiple `FROM` statements in a Dockerfile
+to layer content from different base images.
+
+```dockerfile
+FROM csdms/grpc4bmi:0.1.0
+
+WORKDIR ${CONDA_DIR}
+COPY --from=csdms/bmi-examples:0.1.0 ${CONDA_DIR}/bin/run_bmiheatcxx bin/run_bmiheatcxx
+COPY --from=csdms/bmi-examples:0.1.0 ${CONDA_DIR}/lib/libbmiheatcxx.so lib/libbmiheatcxx.so
+```
+
+Here, I'm pulling software built in the `csdms/bmi-examples:0.1.0` image (hosted on Docker Hub)
+into an image based on the `csdms/grpc4bmi:0.1.0` image.
+
+*References:*
+
+  * https://docs.docker.com/build/building/multi-stage/
 
 ### Automated build and push
 
