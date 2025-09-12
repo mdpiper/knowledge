@@ -34,3 +34,9 @@ With the `-l` flag,
 explicitly link against the *bmif* and *bmiheatf* shared libraries
 in this location.
 Name the resulting executable "heat_ex".
+
+## Setting the C dialect
+
+I've had to look this up a few times.
+
+* https://gcc.gnu.org/onlinedocs/gcc/C-Dialect-Options.html
