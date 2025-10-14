@@ -72,6 +72,7 @@ R CMD build accumulator
 ### References:
 
 * [Writing R Extensions](https://cran.r-project.org/doc/manuals/R-exts.html) (cran.r-project.org)
+* The [R Packages](https://r-pkgs.org/) book (r-pkgs.org)
 
 ## Change the R prompt
 
