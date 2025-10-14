@@ -72,3 +72,13 @@ R CMD build accumulator
 ### References:
 
 * [Writing R Extensions](https://cran.r-project.org/doc/manuals/R-exts.html) (cran.r-project.org)
+
+## Change the R prompt
+
+I wanted to change the default prompt from `>` to `R>`.
+Do so locally with:
+```R
+options(prompt="R> ")
+```
+
+Place this command in `$HOME/.Rprofile` to make it stick.
