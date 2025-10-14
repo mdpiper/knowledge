@@ -28,6 +28,46 @@ accumulator
 The source code file is copied into the directory tree.
 A list of next steps to complete the package is given in
 `accumulator/Read-and-delete-me`.
+In particular, `DESCRIPTION` and `NAMESPACE` need to be filled out.
+
+### Check
+
+For a comprehensive check of the new package, run (from a shell prompt)
+```bash
+R CMD check accumulator
+```
+Output is printed to the console and to a log directory, `accumulator.Rcheck`.
+I iterated over this command, fixing the problems it noted.
+
+### Install
+
+Install the new package into the current R distribution so it can be imported.
+```bash
+R CMD install accumulator
+```
+
+In an R session, load the library.
+```R
+> library(accumulator)
+Loading required package: R6
+> Accumulator
+<Accumulator> object generator
+  Public:
+    total: 0
+    add: function (x = 1) 
+    clone: function (deep = FALSE) 
+  Parent env: <environment: namespace:accumulator>
+  Locked objects: TRUE
+  Locked class: FALSE
+  Portable: TRUE
+```
+
+### Build
+
+Build the package into a tarball with:
+```bash
+R CMD build accumulator
+```
 
 ### References:
 
