@@ -2,6 +2,8 @@
 
 I've wanted to learn R for awhile.
 Here's my chance.
+I have a [repository of basic examples](https://github.com/mdpiper/r-examples)
+which I'm using for several of the notes below.
 
 ## Packaging
 
@@ -83,3 +85,28 @@ options(prompt="R> ")
 ```
 
 Place this command in `$HOME/.Rprofile` to make it stick.
+
+## Reference copying
+
+R behaves like Python in that references are copied.
+Assigning one variable to another causes both to point to the same data,
+unless instructed otherwise.
+```R
+> x = Accumulator$new()
+> y = x
+> y$add(5)
+> c(x$total, y$total)
+[1] 5 5
+```
+Although we didn't add to `x`,
+both `y` and `x` point to the same data,
+so updating one updates the other.
+
+Override this behavior with the `$clone` method.
+```R
+> x = Accumulator$new()
+> y = x$clone()
+> y$add(5)
+> c(x$total, y$total)
+[1] 0 5
+```
