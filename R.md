@@ -79,6 +79,7 @@ R CMD build accumulator
 ### References:
 
 * [Writing R Extensions](https://cran.r-project.org/doc/manuals/R-exts.html) (cran.r-project.org)
+* The `package.skeleton` function in the [R documentation](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/package.skeleton) (rdocumentation.org)
 * The [R Packages](https://r-pkgs.org/) book (r-pkgs.org) *(Written assuming use of RStudio.)*
 * I looked at the directory structures of the [ggplot2](https://github.com/tidyverse/ggplot2) and [plotly.R](https://github.com/plotly/plotly.R) repositories (github.com)
 
