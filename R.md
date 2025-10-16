@@ -32,6 +32,11 @@ A list of next steps to complete the package is given in
 `accumulator/Read-and-delete-me`.
 In particular, `DESCRIPTION` and `NAMESPACE` need to be filled out.
 
+*Note*: The `package.skeleton()` is base R.
+There's also the `create_package` function 
+from the [usethis](https://usethis.r-lib.org/reference/create_package.html) library.
+It integrates with RStudio.
+
 ### Check
 
 For a comprehensive check of the new package, run (from a shell prompt)
@@ -74,7 +79,7 @@ R CMD build accumulator
 ### References:
 
 * [Writing R Extensions](https://cran.r-project.org/doc/manuals/R-exts.html) (cran.r-project.org)
-* The [R Packages](https://r-pkgs.org/) book (r-pkgs.org)
+* The [R Packages](https://r-pkgs.org/) book (r-pkgs.org) *(Written assuming use of RStudio.)*
 
 ## Change the R prompt
 
