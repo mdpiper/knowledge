@@ -88,6 +88,14 @@ I iterated over this command, fixing the problems it noted.
 * The [R Packages](https://r-pkgs.org/) book (r-pkgs.org) *(Written assuming use of RStudio.)*
 * I looked at the directory structures of the [ggplot2](https://github.com/tidyverse/ggplot2) and [plotly.R](https://github.com/plotly/plotly.R) repositories (github.com)
 
+## Unit testing
+
+Nothing yet except a helpful reference.
+
+### References
+
+* [Unit Testing in R](https://github.com/bradleyboehmke/unit-testing-r) (github.com)
+
 ## Change the R prompt
 
 I wanted to change the default prompt from `>` to `R>`.
