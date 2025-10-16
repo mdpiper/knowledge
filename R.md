@@ -5,6 +5,15 @@ Here's my chance.
 I have a [repository of basic examples](https://github.com/mdpiper/r-examples)
 which I'm using for several of the notes below.
 
+## Object-oriented programming
+
+R has (at least) three different object-oriented programming systems: S3, S4, and R6.
+
+### References
+
+* [R6: Encapsulated object-oriented programming for R](https://r6.r-lib.org/) (r-lib.org)
+* [Advanced R](https://adv-r.hadley.nz/oo.html) (adv-r.hadley.nz)
+
 ## Packaging
 
 I have code in the file `accumulator.R` that I'd like to share
