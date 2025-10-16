@@ -37,15 +37,6 @@ There's also the `create_package` function
 from the [usethis](https://usethis.r-lib.org/reference/create_package.html) library.
 It integrates with RStudio.
 
-### Check
-
-For a comprehensive check of the new package, run (from a shell prompt)
-```bash
-R CMD check accumulator
-```
-Output is printed to the console and to a log directory, `accumulator.Rcheck`.
-I iterated over this command, fixing the problems it noted.
-
 ### Install
 
 Install the new package into the current R distribution so it can be imported.
@@ -75,6 +66,20 @@ Build the package into a tarball with:
 ```bash
 R CMD build accumulator
 ```
+
+### Check
+
+For a comprehensive check of the new package, run (from a shell prompt):
+```bash
+R CMD check accumulator
+```
+This runs on the source package.
+The docs recommend running `check` on the built tarball:
+```bash
+R CMD check accumulator_1.0.tar.gz
+```
+Output is printed to the console and to a log directory, `accumulator.Rcheck`.
+I iterated over this command, fixing the problems it noted.
 
 ### References:
 
