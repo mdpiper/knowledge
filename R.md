@@ -121,8 +121,8 @@ R behaves like Python in that references are copied.
 Assigning one variable to another causes both to point to the same data,
 unless instructed otherwise.
 ```R
-> x = Accumulator$new()
-> y = x
+> x <- Accumulator$new()
+> y <- x
 > y$add(5)
 > c(x$total, y$total)
 [1] 5 5
@@ -133,8 +133,8 @@ so updating one updates the other.
 
 Override this behavior with the `$clone` method.
 ```R
-> x = Accumulator$new()
-> y = x$clone()
+> x <- Accumulator$new()
+> y <- x$clone()
 > y$add(5)
 > c(x$total, y$total)
 [1] 0 5
