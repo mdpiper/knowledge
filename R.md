@@ -139,3 +139,25 @@ Override this behavior with the `$clone` method.
 > c(x$total, y$total)
 [1] 0 5
 ```
+
+## Linting code
+
+Use `lintr`.
+
+Install:
+```R
+install.packages("lintr")
+```
+
+Run:
+```R
+lintr::use_lintr(type = "tidyverse")
+
+# in a project:
+lintr::lint_dir()
+
+# in a package:
+lintr::lint_package()
+```
+
+See more, including a GHA workflow, at the docs site: https://lintr.r-lib.org/
