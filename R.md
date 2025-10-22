@@ -161,3 +161,20 @@ lintr::lint_package()
 ```
 
 See more, including a GHA workflow, at the docs site: https://lintr.r-lib.org/
+## Flattening a matrix
+
+Make a two-dimensional matrix:
+```R
+> m <- matrix(1:12,3,4)
+> m
+     [,1] [,2] [,3] [,4]
+[1,]    1    4    7   10
+[2,]    2    5    8   11
+[3,]    3    6    9   12
+```
+
+Flatten the matrix with `as.vector`:
+```R
+> as.vector(m)
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12
+```
