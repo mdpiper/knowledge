@@ -178,3 +178,10 @@ Flatten the matrix with `as.vector`:
 > as.vector(m)
  [1]  1  2  3  4  5  6  7  8  9 10 11 12
 ```
+
+## Run R code as a script
+
+Use the `Rscript` command:
+```bash
+Rscript get_shape.R
+```
