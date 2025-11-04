@@ -140,6 +140,21 @@ Override this behavior with the `$clone` method.
 [1] 0 5
 ```
 
+This doesn't appear to hold for lower-level objects,
+like vectors or matrices.
+For example:
+```R
+R> a <- 1:5
+R> a
+[1] 1 2 3 4 5
+R> b <- a
+R> b[1] <- 32
+R> b
+[1] 32  2  3  4  5
+R> a
+[1] 1 2 3 4 5
+```
+
 ## Linting code
 
 Use `lintr`.
@@ -161,6 +176,7 @@ lintr::lint_package()
 ```
 
 See more, including a GHA workflow, at the docs site: https://lintr.r-lib.org/
+
 ## Flattening a matrix
 
 Make a two-dimensional matrix:
