@@ -23,7 +23,7 @@ I tried packaging libraries
 with base R functionality
 and with the `devtools` library.
 
-I think I prefer `devtools`.
+I prefer `devtools`.
 
 ### Using base R
 
@@ -113,6 +113,7 @@ This is my preferred technique.
 
 #### References:
 
+* [devtools](https://devtools.r-lib.org/) (devtools.r-lib.org)
 * The [R Packages](https://r-pkgs.org/) book (r-pkgs.org)
 * I looked at the directory structures of the [ggplot2](https://github.com/tidyverse/ggplot2) and [plotly.R](https://github.com/plotly/plotly.R) repositories (github.com)
 
