@@ -4,6 +4,9 @@ I've wanted to learn R for awhile.
 Here's my chance.
 I have a [repository of basic examples](https://github.com/mdpiper/r-examples)
 which I'm using for several of the notes below.
+I also did a lot of work (and learning) in the
+[csdms/bmi-r](https://github.com/csdms/bmi-r) and
+[csdms/bmi-example-r](https://github.com/csdms/bmi-example-r) repositories.
 
 ## Object-oriented programming
 
@@ -15,6 +18,14 @@ R has (at least) three different object-oriented programming systems: S3, S4, an
 * [Advanced R](https://adv-r.hadley.nz/oo.html) (adv-r.hadley.nz)
 
 ## Packaging
+
+I tried packaging libraries
+with base R functionality
+and with the `devtools` library.
+
+I think I prefer `devtools`.
+
+### Using base R
 
 I have code in the file `accumulator.R` that I'd like to share
 (and simplify use for myself).
@@ -41,12 +52,7 @@ A list of next steps to complete the package is given in
 `accumulator/Read-and-delete-me`.
 In particular, `DESCRIPTION` and `NAMESPACE` need to be filled out.
 
-*Note*: The `package.skeleton()` is base R.
-There's also the `create_package` function 
-from the [usethis](https://usethis.r-lib.org/reference/create_package.html) library.
-It integrates with RStudio.
-
-### Install
+#### Install
 
 Install the new package into the current R distribution so it can be imported.
 ```bash
@@ -69,14 +75,14 @@ Loading required package: R6
   Portable: TRUE
 ```
 
-### Build
+#### Build
 
 Build the package into a tarball with:
 ```bash
 R CMD build accumulator
 ```
 
-### Check
+#### Check
 
 For a comprehensive check of the new package, run (from a shell prompt):
 ```bash
@@ -90,16 +96,34 @@ R CMD check accumulator_1.0.tar.gz
 Output is printed to the console and to a log directory, `accumulator.Rcheck`.
 I iterated over this command, fixing the problems it noted.
 
-### References:
+#### References:
 
 * [Writing R Extensions](https://cran.r-project.org/doc/manuals/R-exts.html) (cran.r-project.org)
 * The `package.skeleton` function in the [R documentation](https://www.rdocumentation.org/packages/utils/versions/3.6.2/topics/package.skeleton) (rdocumentation.org)
-* The [R Packages](https://r-pkgs.org/) book (r-pkgs.org) *(Written assuming use of RStudio.)*
 * I looked at the directory structures of the [ggplot2](https://github.com/tidyverse/ggplot2) and [plotly.R](https://github.com/plotly/plotly.R) repositories (github.com)
+
+### Using `devtools`
+
+To develop the `bmir` and `bmiheatr` packages,
+I followed the recipe given in
+[The Whole Game](https://r-pkgs.org/whole-game.html) chapter
+of the [R Packages](https://r-pkgs.org/) book,
+which uses the `devtools` library.
+This is my preferred technique.
+
+#### References:
+
+* The [R Packages](https://r-pkgs.org/) book (r-pkgs.org)
+* I looked at the directory structures of the [ggplot2](https://github.com/tidyverse/ggplot2) and [plotly.R](https://github.com/plotly/plotly.R) repositories (github.com)
+
 
 ## Unit testing
 
-Nothing yet except a helpful reference.
+I found the [testthat](https://testthat.r-lib.org/) package to be really helpful.
+I used it to develop tests for the `bmir` and `bmiheatr` packages.
+It's callable from `devtools`
+with the `use_testthat()` and `test()` functions.
+Tests are also run with the `check()` function.
 
 ### References
 
