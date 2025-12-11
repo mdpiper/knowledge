@@ -2,6 +2,19 @@
 
 Notes on using Emacs. Gained from years of experience!
 
+## Open file into an existing Emacs session
+
+Use the `emacsclient` command:
+```
+emacsclient foo.md &
+```
+
+Because I'm extremely lazy, I've aliased this command to `ec`.
+
+*Reference:*
+
+* [Entering Emacs](https://www.gnu.org/software/emacs/manual/html_node/emacs/Entering-Emacs.html) [gnu.org]
+
 ## Package management
 
 I'm trying *el-get* for emacs package management.
