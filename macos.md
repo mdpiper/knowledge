@@ -268,3 +268,15 @@ I solved the problem by changing the settings
 for each of my contacts-providing internet accounts
 from automatically checking for contacts updates
 to checking hourly.
+
+## Switch apps on Apple TV
+
+Not macOS!
+But I needed a place to store this info.
+
+To switch between apps--and close unneeded open apps--press the *TV button* twice quickly.
+Swipe L/R to switch apps, swipe up to quit an app.
+
+*Reference:*
+
+* https://support.apple.com/guide/tv/force-quit-an-app-atvb39f389ec/tvos
