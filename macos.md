@@ -280,3 +280,18 @@ Swipe L/R to switch apps, swipe up to quit an app.
 *Reference:*
 
 * https://support.apple.com/guide/tv/force-quit-an-app-atvb39f389ec/tvos
+
+## AirPlay audio and video from Mac to Apple TV
+
+For audio,
+go to *System Settings > Sound > Output & Input > Output*
+and select my Apple TV ("Home Theater").
+Then, from an app (e.g., Qobuz) select AirPlay for output.
+
+For video,
+I've done screen mirroring from my iMac to my Apple TV.
+See "Mirror your Mac on a TV" in the reference linked below.
+
+*Reference:*
+
+* https://support.apple.com/guide/mac-help/stream-video-and-audio-with-airplay-mchld7e543a0/mac
