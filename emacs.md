@@ -158,6 +158,10 @@ Alternately, use
 
     C-x C-v RET
 
+There's also a "quick" revert buffer keybinding
+
+	C-x x g
+
 ## Show full filepath in minibuffer
 
 The full filepath is stored in a variable, `buffer-file-name`.
