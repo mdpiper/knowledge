@@ -243,6 +243,12 @@ I've had the best luck with output to B/W PostScript.
 
 See also [PostScript Hardcopy](https://www.gnu.org/software/emacs/manual/html_node/emacs/PostScript.html). [gnu.org]
 
+## Menubar visibilty
+
+Toggle menubar visibility with
+
+	M-x menu-bar-mode
+
 ## Access menubar in console mode
 
 Starting emacs with `-nw` displays the menubar in a terminal.
