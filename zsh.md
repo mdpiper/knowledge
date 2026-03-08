@@ -43,7 +43,11 @@ prompt ithaca
 
 ## Paths
 
-This [gist](https://gist.github.com/Linerre/f11ad4a6a934dcf01ee8415c9457e7b2)
+Set up PATH in `.zshenv`.
+
+*Resources:*
+
+* An explanation on [configuring the zsh path](https://wiki.archlinux.org/title/Zsh#Configuring_$PATH) from the Arch Linux docs
+* This [gist](https://gist.github.com/Linerre/f11ad4a6a934dcf01ee8415c9457e7b2)
 was helpful for decoding mysterious path ordering on macOS.
 
-I ended up moving the code to set path from `.zshenv` to `.zprofile`.
