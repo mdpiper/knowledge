@@ -17,6 +17,8 @@ files in my [dotfiles repo](https://github.com/mdpiper/dotfiles).
 *Resources:*
 
 * A great description of zsh from the [Arch Linux docs](https://wiki.archlinux.org/title/zsh)
+* A [sample .zshrc file](https://github.com/MrElendig/dotfiles-alice/blob/master/.zshrc)
+with many customizations.
 
 ## Prompts
 
