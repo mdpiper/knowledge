@@ -39,6 +39,7 @@ prompt ithaca
 * A description of [zsh prompts](https://wiki.archlinux.org/title/zsh#Prompts) from the Arch Linux docs
 * [Expansion of prompt sequences](https://man.archlinux.org/man/zshmisc.1#EXPANSION_OF_PROMPT_SEQUENCES), also from the Arch Linux docs
 * [Zsh prompts that don't suck](https://sureshjoshi.com/development/zsh-prompts-that-dont-suck), with a nice, step-by-step explanation of building a prompt
+* [Pure](https://github.com/sindresorhus/pure) is a nice zsh prompt
 * An [xterm 256 color](https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg) chart
 * ohmyzsh [themes](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes), which I think is too much
 
